@@ -1,0 +1,21 @@
+class Mainrole{
+
+	field int x,y;
+
+	field int size;
+
+	constructor Mainrole new(String owner)
+
+	method move up(int D)
+
+	method move down(int D)
+
+	method move right(int D)
+
+	method move left(int D)
+
+	method put bomb(int space)
+
+	method die()
+
+}

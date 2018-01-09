@@ -1,0 +1,10 @@
+class main {
+
+	function void main() {
+		var obstacle obstacle1;
+		let obstacle1 = Square.obstacle(20, 20);
+		do obstacle1.draw();
+		return;
+	}
+	
+}

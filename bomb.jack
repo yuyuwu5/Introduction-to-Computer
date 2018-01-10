@@ -1,0 +1,18 @@
+Class Bomb{
+	field int x,y;
+	field int t;
+	constructor Mainrole new(int Ax,int Ay){
+		let x=Ax;
+		let y=Ay;
+		let t=0;
+		do draw();
+		return this;
+	}
+	method draw{
+		do Screen.setColor(true);
+		do Screen.drawCircle(x+8,y+8,8);
+	}
+	method explode{
+	
+	}
+}

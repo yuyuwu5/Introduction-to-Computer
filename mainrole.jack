@@ -18,7 +18,7 @@ class Mainrole{
 	}
 	method void draw(){
 		do Screen.setColor(true);
-		do Screen.drawcircle(x+8,y+3,3);
+		do Screen.drawCircle(x+8,y+3,3);
 		do Screen.drawLine(x+8,y+3,x+8,y+10);
 		do Screen.drawLine(x+3,y+6,x+13,y+6);
 		do Screen.drawLine(x+8,y+10,x+13,y+14);
@@ -26,7 +26,7 @@ class Mainrole{
 	}
 	method void erase(){
 		do Screen.setColor(false);
-		do Screen.drawcircle(x+8,y+3,3);
+		do Screen.drawCircle(x+8,y+3,3);
 		do Screen.drawLine(x+8,y+3,x+8,y+10);
 		do Screen.drawLine(x+3,y+6,x+13,y+6);
 		do Screen.drawLine(x+8,y+10,x+13,y+14);

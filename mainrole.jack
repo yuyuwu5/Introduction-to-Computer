@@ -1,10 +1,10 @@
-class Mainrole{
+class mainrole{
 
 	field int x,y;
 
 	field int size;
 
-	constructor Mainrole new(int Ax,int Ay,int Asize){
+	constructor mainrole new(int Ax,int Ay,int Asize){
 		let x=Ax;
 		let y=Ay;
 		let size=Asize;
@@ -63,5 +63,8 @@ class Mainrole{
 			do draw();
 		}
 		return;
+	}
+	method void putbomb(){
+		putbomb(x,y);
 	}
 }

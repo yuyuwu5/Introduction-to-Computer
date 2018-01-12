@@ -1,0 +1,66 @@
+class level_1{
+	field mainrole role;
+	field int direction;
+	field boolen alive;
+	field int x,y;
+	field int bomb_x,bomb_y;
+	field String GAME_OVER;
+
+	//field level_1_map map;
+	
+	constructor level_1 new(){
+	    let x = 48;
+	    let y = 48;
+	    let alive = true;
+	    let role = mainrole.new(x,y);
+	    let direction = 0;
+	    //let map = level_1_map;
+	    return this;
+	}
+	method void dispose() {
+      do square.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+	method void moveRole() {
+      if (direction = 1) { do role.moveup(); }
+      if (direction = 2) { do role.movedown(); }
+      if (direction = 3) { do role.moveleft(); }
+      if (direction = 4) { do role.moveright(); }
+      do Sys.wait(100);  
+      return;
+   }
+    
+    method void run() {
+        var char key; 
+        var boolean exit;
+        let exit = false;
+
+        while (~exit & alive ) {
+            let direction = 0;
+            let key = Keyboard.keyPressed();
+
+            if (key = 81)  { let exit = true; }      // q key
+            if (key = 131) { let direction = 1; }
+            if (key = 83) { let direction = 1; }     // s key
+            if (key = 88)  { let direction = 2; }    // x key
+            if (key = 133) { let direction = 2; }
+            if (key = 90)  { let direction = 3; }    // z key
+            if (key = 130) { let direction = 3; }
+            if (key = 67) { let direction = 4; }     // c key
+            if (key = 132) { let direction = 4; }
+            do moveRole();
+            if (key = 32) { do role.putbomb();let alive = false; }     // space
+            
+         }
+
+         if(~alive){
+             do Output.moveCursor(12,25);
+             do Output.printString("GAME OVER");
+             do Output.println();
+         }
+         return;
+    }
+    
+}
+

@@ -65,6 +65,6 @@ class mainrole{
 		return;
 	}
 	method void putbomb(){
-		do bomb.putbomb(x,y);
+		do bomb.new(x,y);
 	}
 }

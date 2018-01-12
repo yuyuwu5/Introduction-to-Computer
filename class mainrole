@@ -30,7 +30,7 @@ class mainrole{
 		do Screen.drawLine(x+16,y+20,x+6,y+28);
 	}
 	method void moveup(){
-		if(y>=64){
+		if(y>=48){
 			do erase();
 			let y=y-32;
 			do draw();
@@ -38,7 +38,7 @@ class mainrole{
 		return;
 	}
 	method void movedown(){
-		if(y<192){
+		if(y<208){
 			do erase();
 			let y=y+32;
 			do draw();
@@ -46,7 +46,7 @@ class mainrole{
 		return;
 	}
 	method void moveright(){
-		if(x<448){
+		if(x<464){
 			do erase();
 			let x=x+32;
 			do draw();
@@ -54,7 +54,7 @@ class mainrole{
 		return;
 	}
 	method void moveleft(){
-		if(x>=64){
+		if(x>=48){
 			do erase();
 			let x=x-32;
 			do draw();

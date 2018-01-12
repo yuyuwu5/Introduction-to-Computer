@@ -62,7 +62,7 @@ class mainrole{
 	}
 
 	method void moveup(){
-		if(y>33){
+		if(y>16){
 			do erase();
 			let y=y-32;
 			do draw(y*32+(x/16));
@@ -70,7 +70,7 @@ class mainrole{
 		return;
 	}
 	method void movedown(){
-		if(y<208){
+		if(y<240){
 			do erase();
 			let y=y+32;
 			do draw(y*32+(x/16));
@@ -78,7 +78,7 @@ class mainrole{
 		return;
 	}
 	method void moveright(){
-		if(x<464){
+		if(x<496){
 			do erase();
 			let x=x+32;
 			do draw(y*32+(x/16));
@@ -86,7 +86,7 @@ class mainrole{
 		return;
 	}
 	method void moveleft(){
-		if(x>33){
+		if(x>16){
 			do erase();
 			let x=x-32;
 			do draw(y*32+(x/16));

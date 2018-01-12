@@ -1,4 +1,4 @@
-class putbomb{
+class bomb{
     field int x,y;
 
 	constructor bomb new(int Ax,int Ay){

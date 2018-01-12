@@ -20,6 +20,7 @@ class mainrole{
 		do Screen.drawLine(x+6,y+12,x+26,y+12);
 		do Screen.drawLine(x+16,y+20,x+26,y+28);
 		do Screen.drawLine(x+16,y+20,x+6,y+28);
+		return;
 	}
 	method void erase(){
 		do Screen.setColor(false);
@@ -28,9 +29,11 @@ class mainrole{
 		do Screen.drawLine(x+6,y+12,x+26,y+12);
 		do Screen.drawLine(x+16,y+20,x+26,y+28);
 		do Screen.drawLine(x+16,y+20,x+6,y+28);
+		return;
 	}
+
 	method void moveup(){
-		if(y>=48){
+		if(y>33){
 			do erase();
 			let y=y-32;
 			do draw();
@@ -54,7 +57,7 @@ class mainrole{
 		return;
 	}
 	method void moveleft(){
-		if(x>=48){
+		if(x>33){
 			do erase();
 			let x=x-32;
 			do draw();
@@ -62,6 +65,7 @@ class mainrole{
 		return;
 	}
 	method void putbomb(){
-		do bomb.new(x,y);
+		do bomb.new(x+16,y+16);
+		return;
 	}
 }

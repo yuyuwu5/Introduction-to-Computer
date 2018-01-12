@@ -1,0 +1,25 @@
+class Main{
+    
+	function void main(){
+		var level_0,level_1,level_2,level_3, game;
+		
+		let game = level_0.new();
+		do game.run();
+		do game.dispose();
+
+		let game = level_1.new();
+		do game.run();
+		do game.dispose();
+
+		let game = level_2.new();
+		do game.run();
+		do game.dispose();
+
+		let game = level_3.new();
+		do game.run();
+		do game.dispose();
+		
+		return ;
+	}
+	
+}

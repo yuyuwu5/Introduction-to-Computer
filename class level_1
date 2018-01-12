@@ -1,20 +1,20 @@
 class level_1{
 	field mainrole role;
+	field enemy enemy1;
 	field int direction;
 	field boolen alive;
 	field int x,y;
 	field int bomb_x,bomb_y;
-	field String GAME_OVER;
 
-	//field level_1_map map;
 	
 	constructor level_1 new(){
 	    let x = 48;
 	    let y = 48;
 	    let alive = true;
+	    do draw_map_wall();
+	    do draw_map_obstacle();
 	    let role = mainrole.new(x,y);
 	    let direction = 0;
-	    //let map = level_1_map;
 	    return this;
 	}
 	method void dispose() {
@@ -22,6 +22,17 @@ class level_1{
       do Memory.deAlloc(this);
       return;
    }
+    method void draw_map_wall(){
+        do Screen.drawRectangle(0,0,15,255);
+		do Screen.drawRectangle(496,0,511,255);
+		do Screen.drawRectangle(16,0,495,15);
+		do Screen.drawRectangle(16,240,495,255);
+		return;
+    }
+    method void draw_map_obstacle(){
+        return;
+
+    }
 	method void moveRole() {
       if (direction = 1) { do role.moveup(); }
       if (direction = 2) { do role.movedown(); }
@@ -50,7 +61,11 @@ class level_1{
             if (key = 67) { let direction = 4; }     // c key
             if (key = 132) { let direction = 4; }
             do moveRole();
-            if (key = 32) { do role.putbomb();let alive = false; }     // space
+            if (key = 32) {       // space
+            do role.putbomb();
+            do draw_map_wall();
+            let alive = false; 
+            }     
             
          }
 
@@ -63,4 +78,3 @@ class level_1{
     }
     
 }
-

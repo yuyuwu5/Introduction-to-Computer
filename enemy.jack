@@ -19,14 +19,14 @@ class enemy {
 		do Screen.drawLine(x+3,y+2,x+28,y+2);
 		do Screen.drawLine(x+4,y+3,x+27,y+3);
 		do Screen.drawLine(x+5,y+4,x+26,y+4);
-		do Screen.drawLine(x+6,y+5,x+25,x+5);
-		do Screen.drawLine(x+7,y+6,x+24,x+6);
-		do Screen.drawLine(x+8,y+7,x+23,x+7);
-		do Screen.drawLine(x+9,y+8,x+22,x+8);
-		do Screen.drawLine(x+10,y+9,x+21,x+9);
-		do Screen.drawLine(x+11,y+10,x+20,x+10);
-		do Screen.drawLine(x+12,y+11,x+19,x+11);
-		do Screen.drawLine(x+13,y+12,x+18,x+12);
+		do Screen.drawLine(x+6,y+5,x+25,y+5);
+		do Screen.drawLine(x+7,y+6,x+24,y+6);
+		do Screen.drawLine(x+8,y+7,x+23,y+7);
+		do Screen.drawLine(x+9,y+8,x+22,y+8);
+		do Screen.drawLine(x+10,y+9,x+21,y+9);
+		do Screen.drawLine(x+11,y+10,x+20,y+10);
+		do Screen.drawLine(x+12,y+11,x+19,y+11);
+		do Screen.drawLine(x+13,y+12,x+18,y+12);
 		//body
 		do Screen.drawRectangle(x+14,y+13,x+17,y+15);
 		do Screen.drawRectangle(x+14,y+18,x+17,y+23);
@@ -41,20 +41,20 @@ class enemy {
 		return;
 	}
 	method void erase() {
-		do Screen.setColor(true);
+		do Screen.setColor(false);
 		//head
 		do Screen.drawLine(x+2,y+1,x+29,y+1);
 		do Screen.drawLine(x+3,y+2,x+28,y+2);
 		do Screen.drawLine(x+4,y+3,x+27,y+3);
 		do Screen.drawLine(x+5,y+4,x+26,y+4);
-		do Screen.drawLine(x+6,y+5,x+25,x+5);
-		do Screen.drawLine(x+7,y+6,x+24,x+6);
-		do Screen.drawLine(x+8,y+7,x+23,x+7);
-		do Screen.drawLine(x+9,y+8,x+22,x+8);
-		do Screen.drawLine(x+10,y+9,x+21,x+9);
-		do Screen.drawLine(x+11,y+10,x+20,x+10);
-		do Screen.drawLine(x+12,y+11,x+19,x+11);
-		do Screen.drawLine(x+13,y+12,x+18,x+12);
+		do Screen.drawLine(x+6,y+5,x+25,y+5);
+		do Screen.drawLine(x+7,y+6,x+24,y+6);
+		do Screen.drawLine(x+8,y+7,x+23,y+7);
+		do Screen.drawLine(x+9,y+8,x+22,y+8);
+		do Screen.drawLine(x+10,y+9,x+21,y+9);
+		do Screen.drawLine(x+11,y+10,x+20,y+10);
+		do Screen.drawLine(x+12,y+11,x+19,y+11);
+		do Screen.drawLine(x+13,y+12,x+18,y+12);
 		//body
 		do Screen.drawRectangle(x+14,y+13,x+17,y+15);
 		do Screen.drawRectangle(x+14,y+18,x+17,y+23);
@@ -78,22 +78,26 @@ class enemy {
 		let dir = 4;//walk down first
 		while(true) {
 			if((y > y1) & (y < y2) & (dir = 4)) {
+				do Sys.wait(1000);
 				do erase();
 				let y = y + 32;
 				do draw();
 			}
 			if((y = y2) & (dir = 4)) {
+				do Sys.wait(1000);
 				do erase();
 				let y = y - 32;
 				do draw();
 				let dir = 3;
 			}
 			if((y > y1) & (y < y2) & (dir = 3)) {
+				do Sys.wait(1000);
 				do erase();
 				let y = y -32;
 				do draw();
 			}
 			if((y = y1) & (dir = 3)) {
+				do Sys.wait(1000);
 				do erase();
 				let y = y + 32;
 				do draw();
@@ -106,20 +110,30 @@ class enemy {
 		let dir = 1; //walk right first
 		while(true) {
 			if((x > x1) & (x < x2) & (dir = 1)) {
+				do Sys.wait(1000);
 				do erase();
 				let x = x + 32;
 				do draw();
 			}
 			if((x = x2) & (dir = 1)) {
+				do Sys.wait(1000);
 				do erase();
 				let x = x - 32;
 				do draw();
 				let dir = 2;
 			}
 			if((x > x1) & (x < x2) & (dir = 2)) {
+				do Sys.wait(1000);
 				do erase();
 				let x = x - 32;
 				do draw();
+			}
+			if((x = x1) & (dir = 2)) {
+				do Sys.wait(1000);
+				do erase();
+				let x = x + 32;
+				do draw();
+				let dir = 1;
 			}
 		}
 		return;

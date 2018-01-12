@@ -1,6 +1,11 @@
-class main {
+class stageframe {
 
-	function void main() {
+	constructor stageframe new() {
+		do draw();
+		return this;
+	}
+
+	method void draw() {
 		do Screen.setColor(true);
 		do Screen.drawRectangle(0,0,15,255);
 		do Screen.drawRectangle(496,0,511,255);

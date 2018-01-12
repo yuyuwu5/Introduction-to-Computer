@@ -1,0 +1,28 @@
+class obstacle{
+	field int x, y;
+	
+	constructor obstacle new(int posx, int posy) {
+		let x = posx;
+		let y = posy;
+		
+		do draw();
+		
+		return this;
+	}
+	
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+	
+	method void draw() {
+		do Screen.setColor(true);
+		do Screen.drawRectangle(x,y,x+31,y+1);
+		do Screen.drawRectangle(x,y+1,x+1,y+31);
+		do Screen.drawRectangle(x+2,y+30,x+31,y+31);
+		do Screen.drawRectangle(x+30,y+2,x+31,y+30);
+		do Screen.drawLine(x,y,x+31,y+31);
+		do Screen.drawLine(x,y+31,x+31,y);
+		return;
+	}
+}

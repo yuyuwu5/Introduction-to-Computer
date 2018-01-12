@@ -18,53 +18,53 @@ class mainrole{
 	}
 	method void draw(){
 		do Screen.setColor(true);
-		do Screen.drawCircle(x+8,y+3,3);
-		do Screen.drawLine(x+8,y+3,x+8,y+10);
-		do Screen.drawLine(x+3,y+6,x+13,y+6);
-		do Screen.drawLine(x+8,y+10,x+13,y+14);
-		do Screen.drawLine(x+8,y+10,x+3,y+14);
+		do Screen.drawCircle(x+16,y+6,6);
+		do Screen.drawLine(x+16,y+6,x+16,y+20);
+		do Screen.drawLine(x+6,y+12,x+26,y+12);
+		do Screen.drawLine(x+16,y+20,x+26,y+28);
+		do Screen.drawLine(x+16,y+20,x+6,y+28);
 	}
 	method void erase(){
 		do Screen.setColor(false);
-		do Screen.drawCircle(x+8,y+3,3);
-		do Screen.drawLine(x+8,y+3,x+8,y+10);
-		do Screen.drawLine(x+3,y+6,x+13,y+6);
-		do Screen.drawLine(x+8,y+10,x+13,y+14);
-		do Screen.drawLine(x+8,y+10,x+3,y+14);
+		do Screen.drawCircle(x+16,y+6,6);
+		do Screen.drawLine(x+16,y+6,x+16,y+20);
+		do Screen.drawLine(x+6,y+12,x+26,y+12);
+		do Screen.drawLine(x+16,y+20,x+26,y+28);
+		do Screen.drawLine(x+16,y+20,x+6,y+28);
 	}
 	method void moveup(){
-		if(y>=16){
+		if(y>=64){
 			do erase();
-			let y=y-16;
+			let y=y-32;
 			do draw();
 		}
 		return;
 	}
 	method void movedown(){
-		if(y<240){
+		if(y<192){
 			do erase();
-			let y=y+16;
+			let y=y+32;
 			do draw();
 		}
 		return;
 	}
 	method void moveright(){
-		if(x<496){
+		if(x<448){
 			do erase();
-			let x=x+16;
+			let x=x+32;
 			do draw();
 		}
 		return;
 	}
 	method void moveleft(){
-		if(x>=16){
+		if(x>=64){
 			do erase();
-			let x=x-16;
+			let x=x-32;
 			do draw();
 		}
 		return;
 	}
 	method void putbomb(){
-		putbomb(x,y);
+		do bomb.putbomb(x,y);
 	}
 }

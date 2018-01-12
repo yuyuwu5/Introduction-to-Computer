@@ -3,7 +3,7 @@
 # If you have any brilliant idea, just modify this file!!!
 
 * (吳)- 吳由由  (李)- 李昇峰 (林)- 林奕萱
-* 以 16X16 為單位做一格
+* 以 32X32 為單位做一格
 
 * Main chaeacter
     - 圓頭 (李)

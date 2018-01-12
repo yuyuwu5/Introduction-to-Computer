@@ -2,12 +2,9 @@ class mainrole{
 
 	field int x,y;
 
-	field int size;
-
-	constructor mainrole new(int Ax,int Ay,int Asize){
+	constructor mainrole new(int Ax,int Ay){
 		let x=Ax;
 		let y=Ay;
-		let size=Asize;
 		do draw();
 		return this;
 	}

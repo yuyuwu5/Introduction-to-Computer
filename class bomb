@@ -1,6 +1,8 @@
 class bomb{
     field int x,y;
     field int role_x,role_y;
+    field int situation,temp;
+    field int warn;
 
 	constructor bomb new(int Ax,int Ay){
         let x = Ax;
@@ -12,6 +14,21 @@ class bomb{
       do Memory.deAlloc(this);
       return;
    }
+    method int boudary_warn_x(){
+        var int k;
+        let k=0;
+        if(x<63){let k = x;}
+        if(x>448){let k =x;}
+        return k;
+        
+    }
+    method int boudary_warn_y(){
+        var int k;
+        let k = 0;
+        if(y<63){let k = y;}
+        if(y>173){let k =y;}
+        return k;
+    }
 	method void draw(){
 	    do Screen.setColor(true);
 		do Screen.drawPixel(x,y-12);
@@ -27,53 +44,63 @@ class bomb{
         return;
 	}
 	method void erase_side(){
-	    do Screen.setColor(false);
-	    do Screen.drawRectangle(x-48,y-16,x+48,y+16);
-	    do Screen.drawRectangle(x-16,y-48,x+16,y+48);
-        return;
+        
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x-16,y-16,x+16,y+16);
+
+        if(x>48){do Screen.drawRectangle(x-48,y-16,x-16,y+16);}
+        if(x<464){do Screen.drawRectangle(x+16,y-16,x+48,y+16);}
+        if(y>48){do Screen.drawRectangle(x-16,y-48,x+16,y-16);}
+        if(y<177){do Screen.drawRectangle(x-16,y+16,x+16,y+48);}
+           
+	     return;
 	}
 	method void explode(){
-
+        
 	    do Screen.setColor(true);
+        if(x>48){
         do Screen.drawRectangle(x-45,y+5,x-35,y+15);
         do Screen.drawRectangle(x-25,y+5,x-15,y+15);
         do Screen.drawRectangle(x-35,y-5,x-25,y+5);
         do Screen.drawRectangle(x-45,y-15,x-35,y-5);
         do Screen.drawRectangle(x-25,y-15,x-15,y-5);
-        
+        }
+        if(y<177){
         do Sys.wait(5);
         do Screen.drawRectangle(x-15,y+35,x-5,y+45);
         do Screen.drawRectangle(x-15,y+15,x-5,y+25);
         do Screen.drawRectangle(x+5,y+35,x+15,y+45);
         do Screen.drawRectangle(x+5,y+15,x+15,y+25);
         do Screen.drawRectangle(x-5,y+25,x+5,y+35);
-        
+        }
         do Sys.wait(5);
         do Screen.drawRectangle(x-15,y+5,x-5,y+15);
         do Screen.drawRectangle(x-15,y-15,x-5,y-5);
         do Screen.drawRectangle(x+5,y+5,x+15,y+15);
         do Screen.drawRectangle(x+5,y-15,x+15,y-5);
         do Screen.drawRectangle(x-5,y-5,x+5,y+5);
-
+        
+        if(x<464){
         do Sys.wait(5);
         do Screen.drawRectangle(x+35,y+5,x+45,y+15);
         do Screen.drawRectangle(x+15,y+5,x+25,y+15);
         do Screen.drawRectangle(x+25,y-5,x+35,y+5);
         do Screen.drawRectangle(x+35,y-15,x+45,y-5);
         do Screen.drawRectangle(x+15,y-15,x+25,y-5);
+        }
         
+        if(y>48){
         do Sys.wait(5);
         do Screen.drawRectangle(x-15,y-45,x-5,y-35);
         do Screen.drawRectangle(x-15,y-25,x-5,y-15);
         do Screen.drawRectangle(x+5,y-45,x+15,y-35);
         do Screen.drawRectangle(x+5,y-25,x+15,y-15);
         do Screen.drawRectangle(x-5,y-35,x+5,y-25);
-
-        do Sys.wait(200); 
-        
+        }
+        do Sys.wait(200);    
         return;
 	}
-	method int check_kill(int ax,int ay){
+    method int check_kill(int ax,int ay){
         var int situations, a,b;
         let situations=1;
         let a = Math.abs(ax-x+16);

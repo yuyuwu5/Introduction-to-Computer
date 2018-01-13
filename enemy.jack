@@ -1,9 +1,8 @@
 class enemy {
 	
 	field int x, y;
-	//field int range1, range2, range3, range4;
 	field memAddress memAddress;
-	field int location, newlocation, temp;
+	field int location, temp;
 
 	constructor enemy new(int posx, int posy) {
 		let x = posx;
@@ -178,7 +177,12 @@ class enemy {
 	}
 	
 	method void moveupdown(int y1, int y2) { //situation 1 (y1 walk to y2)
+		var int direction,k, newlocation;
+		if(temp<0){let direction = 1; let newlocation = (y-32)*32+(x/16);}
+		if(temp>0){let direction = 2; let newlocation = (y+32)*32+(x/16);}
+		let k = walk_or_turn(16384+newlocation,direction);
 		do erase(y*32 + (x / 16));
+		if(k=0){let temp = temp*(-1);let y = y+4;}
 		if (y =y1){let temp = temp*(-1); let y = y+4;}
 		if (y =y2){let temp = temp*(-1); let y = y-4;}
 		let y = y + temp;
@@ -186,12 +190,41 @@ class enemy {
 		return;
 	}
 	method void moverightleft(int x1, int x2) { // situation 2
+		var int direction,newlocation,k;
+		if(temp>0){let direction = 3; let newlocation = y*32+(x/16)+2;}
+		if(temp<0){let direction = 4; let newlocation = y*32+(x/16)-2;}
+		let k = walk_or_turn(16384+newlocation,direction);
 		do erase(y*32 + (x / 16));
+		if(k=0){let x=x+4;let temp = temp*(-1);}
 		if (x =x1){ let x=x+4; let temp = temp*(-1);}
 		if (x =x2){ let x=x-4; let temp = temp*(-1);}
 		let x = x + temp;
-		//do Output.printInt(x);
 		do draw(y*32 + (x / 16));
 		return;
+	}
+	method int walk_or_turn(int x,int direction){
+	    var int walk1,ss;
+	    if(direction = 1){
+	        let ss= Memory.peek(x);//do Output.printInt(ss);
+	        if(ss=0)
+	        {let walk1=1;}
+	        else {let walk1=0;}
+	        }
+	    if(direction = 2){
+	    let ss= Memory.peek(x);//do Output.printInt(ss);
+	     if (ss = 0){let walk1=1;}
+	     else {let walk1=0;}
+	    }
+	    if(direction = 3){
+	    let ss= Memory.peek(x);//do Output.printInt(ss);
+	     if (ss = 0){let walk1=1;}
+	     else {let walk1=0;}
+	    }
+	    if(direction = 4){
+	    let ss= Memory.peek(x);//do Output.printInt(ss);
+	     if (ss = 0){let walk1=1;}
+	     else {let walk1=0;}
+	    }
+	    return walk1;
 	}
 }

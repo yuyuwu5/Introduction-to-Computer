@@ -1,7 +1,7 @@
 class enemy {
 	
 	field int x, y;
-	field int range1, range2, range3, range4;
+	//field int range1, range2, range3, range4;
 	field memAddress memAddress;
 	field int location, newlocation, temp;
 
@@ -93,9 +93,82 @@ class enemy {
 		
 		return;
 	}
-	method void erase() {
-		do Screen.setColor(false);
-		do Screen.drawRectangle(x-13,y-13,x+32,y+32);
+	method void erase(int location) {
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, 0);
+		do Memory.poke(memAddress+32, 0);
+		do Memory.poke(memAddress+64, 0);
+		do Memory.poke(memAddress+96, 0);
+		do Memory.poke(memAddress+128, 0);
+		do Memory.poke(memAddress+160, 0);
+		do Memory.poke(memAddress+192, 0);
+		do Memory.poke(memAddress+224, 0);
+		do Memory.poke(memAddress+256, 0);
+		do Memory.poke(memAddress+288, 0);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, 0);
+		do Memory.poke(memAddress+480, 0);
+		
+		let location = location+1;
+	    let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, 0);
+		do Memory.poke(memAddress+32, 0);
+		do Memory.poke(memAddress+64, 0);
+		do Memory.poke(memAddress+96, 0);
+		do Memory.poke(memAddress+128, 0);
+		do Memory.poke(memAddress+160, 0);
+		do Memory.poke(memAddress+192, 0);
+		do Memory.poke(memAddress+224, 0);
+		do Memory.poke(memAddress+256, 0);
+		do Memory.poke(memAddress+288, 0);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, 0);
+		do Memory.poke(memAddress+480, 0);
+		
+		let location = location-1;
+	    let location =location+(32*16);
+	    let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, 0);
+		do Memory.poke(memAddress+32, 0);
+		do Memory.poke(memAddress+64, 0);
+		do Memory.poke(memAddress+96, 0);
+		do Memory.poke(memAddress+128, 0);
+		do Memory.poke(memAddress+160, 0);
+		do Memory.poke(memAddress+192, 0);
+		do Memory.poke(memAddress+224, 0);
+		do Memory.poke(memAddress+256, 0);
+		do Memory.poke(memAddress+288, 0);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, 0);
+		do Memory.poke(memAddress+480, 0);
+		
+		let location = location+1;
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, 0);
+		do Memory.poke(memAddress+32, 0);
+		do Memory.poke(memAddress+64, 0);
+		do Memory.poke(memAddress+96, 0);
+		do Memory.poke(memAddress+128, 0);
+		do Memory.poke(memAddress+160, 0);
+		do Memory.poke(memAddress+192, 0);
+		do Memory.poke(memAddress+224, 0);
+		do Memory.poke(memAddress+256, 0);
+		do Memory.poke(memAddress+288, 0);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, 0);
+		do Memory.poke(memAddress+480, 0);
 		return;
 	}
 	
@@ -105,7 +178,7 @@ class enemy {
 	}
 	
 	method void moveupdown(int y1, int y2) { //situation 1 (y1 walk to y2)
-		do erase();
+		do erase(y*32 + (x / 16));
 		if (y =y1){let temp = temp*(-1); let y = y+4;}
 		if (y =y2){let temp = temp*(-1); let y = y-4;}
 		let y = y + temp;
@@ -113,13 +186,12 @@ class enemy {
 		return;
 	}
 	method void moverightleft(int x1, int x2) { // situation 2
-		do erase();
-		if (x =x1){let temp = temp*(-1); let x=x+4;}
-		if (x =x2){let temp = temp*(-1); let x=x-4;}
+		do erase(y*32 + (x / 16));
+		if (x =x1){ let x=x+4; let temp = temp*(-1);}
+		if (x =x2){ let x=x-4; let temp = temp*(-1);}
 		let x = x + temp;
 		//do Output.printInt(x);
 		do draw(y*32 + (x / 16));
 		return;
 	}
-	
 }

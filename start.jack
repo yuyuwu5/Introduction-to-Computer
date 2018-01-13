@@ -1,0 +1,49 @@
+class start{
+	field char key;
+	
+	constructor start new(){
+		do draw();
+		return this;
+	}
+	
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+	
+	method void draw(){
+		do Screen.setColor(true);
+		do Screen.drawRectangle(16,16,96,32);
+		do Screen.drawRectangle(32,64,96,80);
+		do Screen.drawRectangle(32,112,96,128);
+		do Screen.drawRectangle(16,32,32,128);
+		do Screen.drawRectangle(112,16,192,32);
+		do Screen.drawRectangle(144,32,160,128);
+		do Screen.drawRectangle(256,16,272,32);
+		do Screen.drawRectangle(272,32,288,48);
+		do Screen.drawRectangle(288,48,304,128);
+		do Screen.drawRectangle(304,32,320,48);
+		do Screen.drawRectangle(320,16,336,32);
+		do Screen.drawRectangle(352,16,416,128);
+		do Screen.drawRectangle(432,16,496,128);
+		do Screen.setColor(false);
+		do Screen.drawRectangle(368,32,400,112);
+		do Screen.drawRectangle(448,16,480,112);
+		do Output.moveCursor(8,25);
+		do Output.printString("and");
+		do Output.moveCursor(18,25);
+		do Output.printString("PRESS ANY BOTTON");
+		return;
+	}
+	method void wait(){
+		let key = 0;
+		while(key = 0) {
+
+			let key = Keyboard.keyPressed();
+
+			do Sys.wait(1000);
+		}
+		return;
+	}
+	
+}

@@ -95,7 +95,7 @@ class enemy {
 	}
 	method void erase() {
 		do Screen.setColor(false);
-		do Screen.drawRectangle(x,y,x+32,y+32);
+		do Screen.drawRectangle(x-13,y-13,x+32,y+32);
 		return;
 	}
 	

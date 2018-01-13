@@ -1,23 +1,28 @@
 class Main{
     
 	function void main(){
-		var level_0,level_1,level_2,level_3, game;
-		
+		var level_0 game;
+		var level_1 game1;
+		var level_2 game2;
+		var level_3 game3;
+
 		let game = level_0.new();
 		do game.run();
 		do game.dispose();
+		
+		let game1 = level_1.new();
+		do game1.run();
+		do game1.dispose();
 
-		let game = level_1.new();
-		do game.run();
-		do game.dispose();
+		
+		let game2 = level_2.new();
+		do game2.run();
+		do game2.dispose();
+		
 
-		let game = level_2.new();
-		do game.run();
-		do game.dispose();
-
-		let game = level_3.new();
-		do game.run();
-		do game.dispose();
+		let game3 = level_3.new();
+		do game3.run();
+		do game3.dispose();
 		
 		return ;
 	}

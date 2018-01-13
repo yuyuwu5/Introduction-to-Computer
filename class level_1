@@ -1,6 +1,6 @@
 class level_1{
 	field mainrole role;
-	field enemy enemy1;
+	field enemy enemy1, enemy2;
 	field int direction;
 	field boolen alive;
 	field int x,y;
@@ -15,7 +15,10 @@ class level_1{
 	    do draw_map_wall();
 	    do draw_map_obstacle();
 	    let role = mainrole.new(x,y);
+	    let enemy1=enemy.new(336,80);
+	    let enemy2=enemy.new(112,208);
 	    let direction = 0;
+	   // do Output.printInt(2*(-1));
 	    return this;
 	}
 	method void dispose() {
@@ -42,16 +45,21 @@ class level_1{
       if (direction = 2) { do role.movedown(); }
       if (direction = 3) { do role.moveleft(); }
       if (direction = 4) { do role.moveright(); }
-      do Sys.wait(100);  
+      do Sys.wait(5);  
       return;
    }
-    
+ /*   method void moveEnemy(){
+        do enemy1.moveupdown(48,144);
+        do enemy2.moverightleft(80,432);
+        do Sys.wait(50);  
+        return;
+    }*/
     method void run() {
         var char key, key1; 
         var boolean exit;
         let exit = false;
 
-        while (~exit & alive ) {
+        while (~exit) {
             let direction = 0;
             let key = Keyboard.keyPressed();
 
@@ -65,11 +73,15 @@ class level_1{
             if (key = 67) { let direction = 4; }     // c key
             if (key = 132) { let direction = 4; }
             do moveRole();
-            if (key = 32) { // space   
+            do enemy1.moveupdown(48,176);
+            do enemy2.moverightleft(80,432);
+            do Sys.wait(50);
+            
+            /*if (key = 32) { // space   
             do role.putbomb();
             do draw_map_wall();
             let alive = false; 
-            }     
+            }     */
             
          }
 
@@ -79,6 +91,5 @@ class level_1{
              do Output.println();
          }
          return;
-    }
-    
+    }  
 }

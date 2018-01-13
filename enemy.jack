@@ -3,10 +3,12 @@ class enemy {
 	field int x, y;
 	field int range1, range2, range3, range4;
 	field memAddress memAddress;
+	field int location, newlocation, temp;
+
 	constructor enemy new(int posx, int posy) {
 		let x = posx;
 		let y = posy;
-		
+		let temp = 4;
 		do draw(y*32 + (x / 16));
 		
 		return this;
@@ -102,38 +104,21 @@ class enemy {
 		return;
 	}
 	
-	method void moveupdown(int y1, int y2) {
-		let range1 = y1;
-		let range2 = y2;
-		if(y = range1) {
-			do Sys.wait(200);
-			do erase();
-			let y = range2;
-			do draw(y*32 + (x / 16));
-		}
-		if(y = range2) {
-			do Sys.wait(200);
-			do erase();
-			let y = range1;
-			do draw(y*32 + (x / 16));
-		}
+	method void moveupdown(int y1, int y2) { //situation 1 (y1 walk to y2)
+		do erase();
+		if (y =y1){let temp = temp*(-1); let y = y+4;}
+		if (y =y2){let temp = temp*(-1); let y = y-4;}
+		let y = y + temp;
+		do draw(y*32 + (x / 16));
 		return;
 	}
-	method void moverightleft(int x1, int x2) {
-		let range3 = x1;
-		let range4 = x2;
-		if(x = range3) {
-			do Sys.wait(200);
-			do erase();
-			let x = range4;
-			do draw(y*32 + (x / 16));
-		}
-		if(x = range4) {
-			do Sys.wait(200);
-			do erase();
-			let x = range3;
-			do draw(y*32 + (x / 16));
-		}
+	method void moverightleft(int x1, int x2) { // situation 2
+		do erase();
+		if (x =x1){let temp = temp*(-1); let x=x+4;}
+		if (x =x2){let temp = temp*(-1); let x=x-4;}
+		let x = x + temp;
+		//do Output.printInt(x);
+		do draw(y*32 + (x / 16));
 		return;
 	}
 	

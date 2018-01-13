@@ -2,7 +2,7 @@ class level_1{
 	field mainrole role;
 	field enemy enemy1, enemy2;
 	field int direction;
-	field boolen alive;
+	field int alive;
 	field int x,y;
 	field int role_x,role_y;
     field obstacle obstacle1, obstacle2, obstacle3, obstacle4, obstacle5;
@@ -12,13 +12,14 @@ class level_1{
 	constructor level_1 new(){
 	    let x = 48;
 	    let y = 48;
-	    let alive = true;
 	    do draw_map_wall();
 	    do draw_map_obstacle();
 	    let role = mainrole.new(x,y);
-	    let enemy1=enemy.new(336,80);
+	    let enemy1=enemy.new(112,80);
 	    let enemy2=enemy.new(112,208);
 	    let direction = 0;
+	    let alive=1;
+	    //do Output.printInt(Math.abs(4-2));
 	   // do Output.printInt(2*(-1));
 	    return this;
 	}
@@ -57,7 +58,7 @@ class level_1{
         let exit = false;
         let timer = -1;
 
-        while (~exit) {
+        while (alive=1) {
             let direction = 0;
             let key = Keyboard.keyPressed();
 
@@ -83,7 +84,10 @@ class level_1{
             } 
             if(timer > 0){let timer = timer- 1;do bomb1.draw();}    
             if(timer = 0){
+            let role_x=role.x();
+            let role_y=role.y();
             do bomb1.erase_side();
+            let alive=bomb1.check_kill(role_x,role_y);
             do bomb1.explode();
             do bomb1.erase_side();
             do draw_map_wall(); 
@@ -91,7 +95,7 @@ class level_1{
             }
          }
 
-         if(~alive){
+         if(alive=0){
              do Output.moveCursor(12,25);
              do Output.printString("GAME OVER");
              do Output.println();

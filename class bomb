@@ -73,5 +73,23 @@ class bomb{
         
         return;
 	}
+	method int check_kill(int ax,int ay){
+        var int situations, a,b;
+        let situations=1;
+        let a = Math.abs(ax-x+16);
+        let b = Math.abs(ay-y+16);
+       
+        if(a=32){
+            if(b = 0){
+            let situations=0;}}
+        if(a=0){
+            if(b = 32){
+            let situations=0;}}
+        if(a=0){
+            if(b=0){
+            let situations=0;}}
+        return situations;
+
+    }
    
 }

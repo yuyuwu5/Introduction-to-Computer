@@ -20,7 +20,7 @@ class level_3{
 	    let enemy2 = enemy.new(112,48);
 	    let enemy3 = enemy.new(240,80);
 	    let enemy4 = enemy.new(112,208);
-	    let enemy5 = enemy.new(272,208);
+	    let enemy5 = enemy.new(208,16);
 	    let enemy6 = enemy.new(336,16);
 	    let enemy7 = enemy.new(400,112);
 	    let enemy8 = enemy.new(464,176);
@@ -41,12 +41,12 @@ class level_3{
 		do Screen.drawRectangle(48,48,79,79);
 		do Screen.drawRectangle(48,112,111,143);
 		do Screen.drawRectangle(48,176,79,207);
-		do Screen.drawRectangle(112,16,143,47);
+		//do Screen.drawRectangle(112,16,143,47);
 		do Screen.drawRectangle(112,176,303,207);
 		do Screen.drawRectangle(144,112,175,143);
-		do Screen.drawRectangle(176,16,207,47);
+		//do Screen.drawRectangle(176,16,207,47);
 		do Screen.drawRectangle(208,112,239,143);
-		do Screen.drawRectangle(240,16,271,47);
+		//do Screen.drawRectangle(240,16,271,47);
 		do Screen.drawRectangle(272,112,303,143);
 		do Screen.drawRectangle(304,16,335,111);
 		do Screen.drawRectangle(336,176,399,239);
@@ -64,9 +64,9 @@ class level_3{
 		let ob3 = obstacle.new(48,80);
 		let ob4 = obstacle.new(80,208);
 		let ob5 = obstacle.new(112,112);
-		let ob6 = obstacle.new(144,16);
+		//let ob6 = obstacle.new(144,16);
 		let ob7 = obstacle.new(176,112);
-		let ob8 = obstacle.new(208,16);
+		//let ob8 = obstacle.new(208,16);
 		let ob9 = obstacle.new(240,112);
 		let ob10 = obstacle.new(304,144);
 		let ob11 = obstacle.new(304, 208);
@@ -112,7 +112,7 @@ class level_3{
             do enemy2.moverightleft(80,272);
             do enemy3.moverightleft(80,272);
             do enemy4.moverightleft(112,272);
-            do enemy5.moverightleft(112,272);
+            do enemy5.moverightleft(80,272);
             do enemy6.moveupdown(16,144);
             do enemy7.moveupdown(16,208);
             do enemy8.moveupdown(16,208);

@@ -1,14 +1,11 @@
 class bomb{
     field int x,y;
+    field int role_x,role_y;
 
 	constructor bomb new(int Ax,int Ay){
         let x = Ax;
         let y = Ay;
         do draw();
-        do Sys.wait(1000);
-        do erase_side();
-        do explode();
-        do erase_side();
         return this;
 	}
 	method void dispose() {
@@ -36,6 +33,7 @@ class bomb{
         return;
 	}
 	method void explode(){
+
 	    do Screen.setColor(true);
         do Screen.drawRectangle(x-45,y+5,x-35,y+15);
         do Screen.drawRectangle(x-25,y+5,x-15,y+15);
@@ -71,7 +69,9 @@ class bomb{
         do Screen.drawRectangle(x+5,y-25,x+15,y-15);
         do Screen.drawRectangle(x-5,y-35,x+5,y-25);
 
-        do Sys.wait(500); 
+        do Sys.wait(200); 
+        
         return;
 	}
+   
 }

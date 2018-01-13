@@ -3,11 +3,14 @@ class mainrole{
 	field int x,y;
 	field bomb bomb1;
 	field memAddress memAddress;
+	field int location, temp, newlocation;
+	field int walk2,walk1,walk;
 
 	constructor mainrole new(int Ax,int Ay){
 		let x=Ax;
 		let y=Ay;
 		do draw(y*32+(x/16));
+		
 		return this;
 	}
 
@@ -95,40 +98,84 @@ class mainrole{
 	}
 	method void erase(){
 	 do Screen.setColor(false);
-	 do Screen.drawRectangle(x,y,x+32,y+32);
-		
+	 do Screen.drawRectangle(x-1,y,x+30,y+31);	
 		return;
+	}
+	
+	method int walk_or_not(int x,int direction){
+	    if(direction = 1){
+	        let temp= Memory.peek(x);
+	         //do Output.printInt(temp);
+	        if(temp=0)
+	        {let walk1=1;}
+	        else {let walk1=0;}
+	        }
+	    if(direction = 2){
+	    let temp= Memory.peek(x);
+	         //do Output.printInt(temp);
+	     if (temp = 0){let walk1=1;}
+	     else {let walk1=0;}
+	    }
+	    if(direction = 3){
+	    let temp= Memory.peek(x);
+	    //do Output.printInt(temp);
+	     if (temp = 0){let walk1=1;}
+	     else {let walk1=0;}
+	    }
+	    if(direction = 4){
+	    let temp= Memory.peek(x);
+	    //do Output.printInt(temp);
+	     if (temp = 0){let walk1=1;}
+	     else {let walk1=0;}
+	    }
+	    return walk1;
 	}
 
-	method void moveup(){
+	method void moveup(){//direction 1
 		if(y>33){
-			do erase();
-			let y=y-32;
-			do draw(y*32+(x/16));
+		    let newlocation = (y-32)*32+(x/16);
+		    let walk = walk_or_not(16384+newlocation,1);
+		    if(walk=1){
+			  do erase();
+			  let y=y-32;
+			  do draw(y*32+(x/16));
+			}
 		}
 		return;
 	}
-	method void movedown(){
+	method void movedown(){//direction2
 		if(y<208){
-			do erase();
-			let y=y+32;
-			do draw(y*32+(x/16));
+		let newlocation = (y+32)*32+(x/16);
+		    let walk = walk_or_not(16384+newlocation,2);
+		    if(walk=1){
+			   do erase();
+			   let y=y+32;
+			   do draw(y*32+(x/16));
+			}
 		}
 		return;
 	}
-	method void moveright(){
+	method void moveright(){//direction3
 		if(x<464){
+		let newlocation = y*32+(x/16)+2;
+		    let walk = walk_or_not(16384+newlocation,3);
+		    if(walk=1){
 			do erase();
 			let x=x+32;
 			do draw(y*32+(x/16));
+			}
 		}
 		return;
 	}
-	method void moveleft(){
+	method void moveleft(){//direction4
 		if(x>33){
+		let newlocation = y*32+(x/16)-2;
+		let walk = walk_or_not(16384+newlocation,4);
+		    if(walk=1){
 			do erase();
 			let x=x-32;
 			do draw(y*32+(x/16));
+		}
 		}
 		return;
 	}
@@ -140,4 +187,5 @@ class mainrole{
         do bomb1.erase_side();
 		return;
 	}
+
 }

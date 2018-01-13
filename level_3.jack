@@ -2,7 +2,7 @@ class level_3{
 	field mainrole role;
 	field enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8;
 	field int direction;
-	field boolen alive;
+	field int alive;
 	field int x,y;
 	field int role_x,role_y;
     field obstacle ob1, ob2, ob3, ob4, ob5, ob6, ob7, ob8, ob9, ob10, ob11, ob12, ob13, ob14, ob15, ob16, ob17;
@@ -12,7 +12,7 @@ class level_3{
 	constructor level_3 new(){
 	    let x = 16;
 	    let y = 208;
-	    let alive = true;
+	    let alive = 1;
 	    do draw_map_wall();
 	    do draw_map_obstacle();
 	    let role = mainrole.new(x,y);
@@ -94,7 +94,7 @@ class level_3{
         let exit = false;
         let timer = -1;
 
-        while (~exit) {
+        while (alive=1) {
             let direction = 0;
             let key = Keyboard.keyPressed();
 
@@ -126,7 +126,10 @@ class level_3{
             } 
             if(timer > 0){let timer = timer- 1;do bomb1.draw();}    
             if(timer = 0){
+            let role_x=role.x();
+            let role_y=role.y();
             do bomb1.erase_side();
+            let alive=bomb1.check_kill(role_x,role_y);
             do bomb1.explode();
             do bomb1.erase_side();
             do draw_map_wall(); 
@@ -134,7 +137,7 @@ class level_3{
             }
          }
 
-         if(~alive){
+         if(alive = 0){
              do Output.moveCursor(12,25);
              do Output.printString("GAME OVER");
              do Output.println();

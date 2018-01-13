@@ -5,7 +5,8 @@ class level_1{
 	field boolen alive;
 	field int x,y;
 	field int bomb_x,bomb_y;
-
+    field obstacle obstacle1, obstacle2, obstacle3, obstacle4, obstacle5;
+    field wall wall1,wall2,wall3,wall4,wall5;
 	
 	constructor level_1 new(){
 	    let x = 48;
@@ -25,11 +26,14 @@ class level_1{
     method void draw_map_wall(){
         do Screen.drawRectangle(0,0,15,255);
 		do Screen.drawRectangle(496,0,511,255);
-		do Screen.drawRectangle(16,0,495,15);
-		do Screen.drawRectangle(16,240,495,255);
+		do Screen.drawRectangle(15,0,495,15);
+		do Screen.drawRectangle(15,240,496,255);
 		return;
     }
     method void draw_map_obstacle(){
+        let obstacle1= obstacle.new(80,112);
+        let obstacle1= obstacle.new(176,80);
+
         return;
 
     }
@@ -43,7 +47,7 @@ class level_1{
    }
     
     method void run() {
-        var char key; 
+        var char key, key1; 
         var boolean exit;
         let exit = false;
 
@@ -61,7 +65,7 @@ class level_1{
             if (key = 67) { let direction = 4; }     // c key
             if (key = 132) { let direction = 4; }
             do moveRole();
-            if (key = 32) {       // space
+            if (key = 32) { // space   
             do role.putbomb();
             do draw_map_wall();
             let alive = false; 

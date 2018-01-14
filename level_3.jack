@@ -9,7 +9,7 @@ class level_3{
     field obstacle ob1, ob2, ob3, ob4, ob5, ob6, ob7, ob8, ob9, ob10, ob11, ob12, ob13, ob14, ob15, ob16, ob17;
     //field wall wall1,wall2,wall3,wall4,wall5;
     field bomb bomb1;
-  
+  field int win;
   constructor level_3 new(){
       let x = 16;
       let y = 208;
@@ -97,13 +97,11 @@ class level_3{
       do Sys.wait(5);  
       return;
    }
-    method void run() {
+    method int run() {
         var char key, key1; 
-        var boolean exit;
         var int timer;
-        let exit = false;
         let timer = -1;
-
+        let win=0;
         while (alive=1) {
             let direction = 0;
             let key = Keyboard.keyPressed();
@@ -200,7 +198,7 @@ class level_3{
               if (enemy8_life=0){if(pupu8.draw_()<2){do pupu8.draw(pupu8.locations());}}
             let timer = -1;
             }
-            if(count_enemy = 0){let alive=0;}
+            if(count_enemy = 0){let alive=0;let win=1;}
          }
 
          if(count_enemy >0){
@@ -218,6 +216,6 @@ class level_3{
              do Output.printString("YOU WIN");
              do Output.println();
          }
-         return;
+         return win;
     }  
 }

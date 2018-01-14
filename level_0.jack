@@ -9,6 +9,7 @@ class level_0{
     field int alive,enemy1_life;
     field pupu pupu1;
     field bomb bomb1;
+    field int win;
 	
 	constructor level_0 new(){
 	    let x = 48;
@@ -50,11 +51,11 @@ class level_0{
       return;
    }
  
-    method void run() {
+    method int run() {
         var char key, key1;
         var int timer;
         let timer = -1; 
-        
+        let win=0;
         while (alive=1) {
             let direction = 0;
             let key = Keyboard.keyPressed();
@@ -105,7 +106,7 @@ class level_0{
               let timer = -1;
             }
             
-            if(count_enemy = 0){let alive=0;}
+            if(count_enemy = 0){let alive=0;let win=1;}
          }  
             
        if(count_enemy >0){
@@ -123,6 +124,6 @@ class level_0{
              do Output.printString("YOU WIN");
              do Output.println();
          }
-         return;
+         return win;
     }  
 }

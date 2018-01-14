@@ -9,6 +9,7 @@ class level_1{
     field obstacle obstacle1, obstacle2, obstacle3, obstacle4, obstacle5;
     field bomb bomb1;
     field pupu pupu1,pupu2,pupu3,pupu4;
+    field int win;
 	
 	constructor level_1 new(){
 	    let x = 16;
@@ -79,11 +80,11 @@ class level_1{
       do Sys.wait(5);  
       return;
    }
-    method void run() {
+    method int run() {
         var char key, key1; 
         var int timer;
         let timer = -1;
-
+        let win=0;
         while (alive=1) {
             let direction = 0;
             let key = Keyboard.keyPressed();
@@ -161,7 +162,7 @@ class level_1{
               let timer = -1;
             }
             
-            if(count_enemy = 0){let alive=0;}
+            if(count_enemy = 0){let alive=0;let win=1;}
          }
          if(count_enemy >0){
              do Sys.wait(1000);
@@ -178,6 +179,6 @@ class level_1{
              do Output.printString("YOU WIN");
              do Output.println();
          }
-         return;
+         return win;
     }  
 }

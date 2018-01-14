@@ -7,6 +7,7 @@ class Main{
 		var level_2 game2;
 		var level_3 game3;
 		var level_4 game4;
+		var int go1,go2,go3,go4;
 		var char press;
 		let press = 0;
 		let startgame = start.new();
@@ -20,11 +21,11 @@ class Main{
 		}
 
 		let game = level_0.new();
-		do game.run();
+		let go1= game.run();
 		do game.dispose();
 		do Sys.wait(1000);
 		do Screen.clearScreen();
-
+        if(go1=1){
 		do Output.moveCursor(12,25);
 		do Output.printString("NEXT STAGE");
 		do Sys.wait(1000);
@@ -37,11 +38,11 @@ class Main{
 		}
 
 		let game1 = level_1.new();
-		do game1.run();
+		let go2= game1.run();
 		do game1.dispose();
 		do Sys.wait(1000);
 		do Screen.clearScreen();
-
+        if(go2=1){
 		do Output.moveCursor(12,25);
 		do Output.printString("NEXT STAGE");
 		do Sys.wait(1000);
@@ -56,11 +57,11 @@ class Main{
 
 		
 		let game2 = level_2.new();
-		do game2.run();
+		let go3= game2.run();
 		do game2.dispose();
-
 		do Sys.wait(1000);
 		do Screen.clearScreen();
+		if(go3=1){
 		do Output.moveCursor(12,25);
 		do Output.printString("NEXT STAGE");
 		do Sys.wait(1000);
@@ -74,9 +75,9 @@ class Main{
 		}
 
 		let game3 = level_3.new();
-		do game3.run();
+		let go4= game3.run();
 		do game3.dispose();
-		
+		if(go4=1){
 		do Sys.wait(1000);
 		do Screen.clearScreen();
 		do Output.moveCursor(12,25);
@@ -100,6 +101,10 @@ class Main{
 		do Output.moveCursor(12,25);
 		do Output.printString("YOU FINISH THE GAME!!");
 		do Sys.wait(1000);
+		}
+		}
+		}
+		}
 		return ;
 	}
 	

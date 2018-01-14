@@ -139,20 +139,20 @@ class level_3{
             do bomb1.erase_side();
               if(enemy1_life=1){let enemy1_life=bomb1.check_kill(enemy1.x(),enemy1.y());}
               if(enemy2_life=1){let enemy2_life=bomb1.check_kill(enemy2.x(),enemy2.y());}
-              if(enemy1_life=0){do enemy1.dispose();}
-              if(enemy2_life=0){do enemy2.dispose();}
+              //if(enemy1_life=0){do enemy1.dispose();}
+              //if(enemy2_life=0){do enemy2.dispose();}
               if(enemy3_life=1){let enemy3_life=bomb1.check_kill(enemy3.x(),enemy3.y());}
               if(enemy4_life=1){let enemy4_life=bomb1.check_kill(enemy4.x(),enemy4.y());}
-              if(enemy3_life=0){do enemy3.dispose();}
-              if(enemy4_life=0){do enemy4.dispose();}
+              //if(enemy3_life=0){do enemy3.dispose();}
+              //if(enemy4_life=0){do enemy4.dispose();}
               if(enemy5_life=1){let enemy5_life=bomb1.check_kill(enemy5.x(),enemy5.y());}
               if(enemy6_life=1){let enemy6_life=bomb1.check_kill(enemy6.x(),enemy6.y());}
-              if(enemy5_life=0){do enemy5.dispose();}
-              if(enemy6_life=0){do enemy6.dispose();}
+              //if(enemy5_life=0){do enemy5.dispose();}
+              //if(enemy6_life=0){do enemy6.dispose();}
               if(enemy7_life=1){let enemy7_life=bomb1.check_kill(enemy7.x(),enemy7.y());}
               if(enemy8_life=1){let enemy8_life=bomb1.check_kill(enemy8.x(),enemy8.y());}
-              if(enemy7_life=0){do enemy7.dispose();}
-              if(enemy8_life=0){do enemy8.dispose();}
+              //if(enemy7_life=0){do enemy7.dispose();}
+              //if(enemy8_life=0){do enemy8.dispose();}
             let alive=bomb1.check_kill(role_x,role_y);
             do bomb1.explode();
             do bomb1.erase_side();

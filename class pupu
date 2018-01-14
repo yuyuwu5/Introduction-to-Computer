@@ -1,0 +1,99 @@
+class pupu{
+   field int x,y, temp,drawing;
+   field memAddress memAddress;
+
+   constructor pupu new(int posx, int posy) {
+    let x = posx;
+    let y = posy;
+    let temp = (y*32+(x/16));
+    let drawing =0;   
+    do draw(temp);
+    
+    return this;
+  }
+    method void draw(int location) {
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 0);
+	do Memory.poke(memAddress+32, 16384);
+	do Memory.poke(memAddress+64, 16512);
+	do Memory.poke(memAddress+96, -16192);
+	do Memory.poke(memAddress+128, -32672);
+	do Memory.poke(memAddress+160, 32);
+	do Memory.poke(memAddress+192, 32);
+	do Memory.poke(memAddress+224, 96);
+	do Memory.poke(memAddress+256, 192);
+	do Memory.poke(memAddress+288, -32384);
+	do Memory.poke(memAddress+320, -16128);
+	do Memory.poke(memAddress+352, 16640);
+	do Memory.poke(memAddress+384, 384);
+	do Memory.poke(memAddress+416, -32576);
+	do Memory.poke(memAddress+448, -16288);
+	do Memory.poke(memAddress+480, -4064);
+	
+	let location = location+1;
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 0);
+	do Memory.poke(memAddress+32, 256);
+	do Memory.poke(memAddress+64, 384);
+	do Memory.poke(memAddress+96, 128);
+	do Memory.poke(memAddress+128, 129);
+	do Memory.poke(memAddress+160, 387);
+	do Memory.poke(memAddress+192, 770);
+	do Memory.poke(memAddress+224, 1538);
+	do Memory.poke(memAddress+256, 1027);
+	do Memory.poke(memAddress+288, 1025);
+	do Memory.poke(memAddress+320, 1536);
+	do Memory.poke(memAddress+352, 768);
+	do Memory.poke(memAddress+384, 384);
+	do Memory.poke(memAddress+416, 129);
+	do Memory.poke(memAddress+448, 3);
+	do Memory.poke(memAddress+480, 15);
+	
+	let location = location-1;
+	let location = location+(32*16);
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, -2048);
+	do Memory.poke(memAddress+32, -4096);
+	do Memory.poke(memAddress+64, -512);
+	do Memory.poke(memAddress+96, -256);
+	do Memory.poke(memAddress+128, -128);
+	do Memory.poke(memAddress+160, -256);
+	do Memory.poke(memAddress+192, -512);
+	do Memory.poke(memAddress+224, -1024);
+	do Memory.poke(memAddress+256, -128);
+	do Memory.poke(memAddress+288, -64);
+	do Memory.poke(memAddress+320, -32);
+	do Memory.poke(memAddress+352, -16);
+	do Memory.poke(memAddress+384, -32);
+	do Memory.poke(memAddress+416, -64);
+	do Memory.poke(memAddress+448, -128);
+	do Memory.poke(memAddress+480, 0);
+	
+	let location = location+1;
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 31);
+	do Memory.poke(memAddress+32, 15);
+	do Memory.poke(memAddress+64, 127);
+	do Memory.poke(memAddress+96, 255);
+	do Memory.poke(memAddress+128, 511);
+	do Memory.poke(memAddress+160, 255);
+	do Memory.poke(memAddress+192, 127);
+	do Memory.poke(memAddress+224, 63);
+	do Memory.poke(memAddress+256, 511);
+	do Memory.poke(memAddress+288, 1023);
+	do Memory.poke(memAddress+320, 2047);
+	do Memory.poke(memAddress+352, 4095);
+	do Memory.poke(memAddress+384, 2047);
+	do Memory.poke(memAddress+416, 1023);
+	do Memory.poke(memAddress+448, 511);
+	do Memory.poke(memAddress+480, 0);
+	let drawing =drawing+1;
+	return;
+	}
+	method int locations(){
+	return temp;
+	}
+	method int draw_(){
+	return drawing;
+	}
+}

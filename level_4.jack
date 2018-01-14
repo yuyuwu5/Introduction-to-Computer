@@ -1,0 +1,255 @@
+class level_4{
+	field mainrole role;
+	field enemy enemy1, enemy2,enemy3,enemy4,enemy5,enemy6,enemy7,enemy8,enemy9, enemy10;
+	field int direction;
+	field int alive,enemy1_life,enemy2_life,enemy3_life,enemy4_life,enemy5_life,enemy6_life,
+            enemy7_life,enemy8_life, enemy9_life,enemy10_life,count_enemy;
+	field int x,y;
+	field int role_x,role_y;
+    field obstacle obstacle1, obstacle2, obstacle3, obstacle4, obstacle5;
+    field wall wall1,wall2,wall3,wall4,wall5;
+    field bomb bomb1;
+    field pupu pupu1,pupu2,pupu3,pupu4,pupu5,pupu6,pupu7,pupu8,pupu9,pupu10;
+	
+	constructor level_4 new(){
+	    let x = 240;
+	    let y = 112;
+	    do draw_map_wall();
+	    do draw_map_obstacle();
+	    let role = mainrole.new(x,y);
+	    let enemy1=enemy.new(16,48);
+	    let enemy2=enemy.new(16,176);
+      let enemy3=enemy.new(336,16);//
+      let enemy4=enemy.new(464,208);
+      
+      let enemy5=enemy.new(80,176);//
+      let enemy6=enemy.new(144,80);
+      let enemy7=enemy.new(240,16);
+      let enemy8=enemy.new(272,208);
+      let enemy9=enemy.new(432,48);//
+      let enemy10=enemy.new(432,144);//
+
+	    let enemy1_life=1;
+	    let enemy2_life=1;
+      let enemy3_life=1;
+      let enemy4_life=1;
+      let enemy5_life=1;
+      let enemy6_life=1;
+      let enemy7_life=1;
+      let enemy8_life=1;
+      let enemy9_life=1;
+      let enemy10_life=1;
+      
+	    let count_enemy=10;
+	    let direction = 0;
+	    let alive=1;
+	   // do Output.printInt(2*(-1));
+	    return this;
+	}
+	method void dispose() {
+      do square.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+    method void draw_map_wall(){
+        do Screen.setColor(true);
+    do Screen.drawRectangle(0,0,15,255);
+    do Screen.drawRectangle(496,0,511,255);
+    do Screen.drawRectangle(15,0,495,15);
+    do Screen.drawRectangle(15,240,496,255);
+    
+    do Screen.drawRectangle(48,112,207,143);
+    do Screen.drawRectangle(80,80,111,111);
+    do Screen.drawRectangle(112,144,143,175);
+    do Screen.drawRectangle(240,48,271,79);
+    do Screen.drawRectangle(240,176,271,207);
+    do Screen.drawRectangle(304,112,463,143);
+    do Screen.drawRectangle(432,80,463,111);
+    do Screen.drawRectangle(368,176,400,207);
+		return;
+    }
+    method void draw_map_obstacle(){
+        let obstacle2= obstacle.new(16,112);
+        let obstacle2= obstacle.new(112,16);
+        let obstacle2= obstacle.new(144,48);
+        let obstacle2= obstacle.new(176,16);
+        let obstacle2= obstacle.new(176,48);
+        let obstacle2= obstacle.new(176,80);
+        let obstacle2= obstacle.new(176,144);
+        let obstacle2= obstacle.new(176,176);
+        let obstacle2= obstacle.new(176,208);
+        let obstacle2= obstacle.new(208,48);
+        let obstacle2= obstacle.new(208,80);
+        let obstacle2= obstacle.new(208,144);
+        let obstacle2= obstacle.new(208,176);
+        let obstacle2= obstacle.new(272,48);
+        let obstacle2= obstacle.new(272,80);
+        let obstacle2= obstacle.new(272,144);
+        let obstacle2= obstacle.new(272,176);
+        let obstacle2= obstacle.new(304,16);
+        let obstacle2= obstacle.new(304,48);
+        let obstacle2= obstacle.new(304,80);
+        let obstacle2= obstacle.new(304,144);
+        let obstacle2= obstacle.new(304,176);
+        let obstacle2= obstacle.new(304,208);
+        let obstacle2= obstacle.new(400,48);
+        let obstacle2= obstacle.new(400,144);
+        let obstacle2= obstacle.new(400,208);
+        let obstacle2= obstacle.new(464,112);
+        let obstacle2= obstacle.new(112,208);
+
+        return;
+
+    }
+	method void moveRole() {
+      if (direction = 1) { do role.moveup(); }
+      if (direction = 2) { do role.movedown(); }
+      if (direction = 3) { do role.moveleft(); }
+      if (direction = 4) { do role.moveright(); }
+      do Sys.wait(5);  
+      return;
+   }
+    method void run() {
+        var char key, key1; 
+        var int timer;
+        let timer = -1;
+
+        while (alive=1) {
+            let direction = 0;
+            let key = Keyboard.keyPressed();
+
+            if (key = 81)  { let alive=0; }      // q key
+            if (key = 131) { let direction = 1; }
+            if (key = 83)  { let direction = 1; }    // s key
+            if (key = 88)  { let direction = 2; }    // x key
+            if (key = 133) { let direction = 2; }
+            if (key = 90)  { let direction = 3; }    // z key
+            if (key = 130) { let direction = 3; }
+            if (key = 67)  { let direction = 4; }    // c key
+            if (key = 132) { let direction = 4; }
+            do moveRole();
+            if (enemy1_life=1){do enemy1.moveupdown(0,255);}
+            if (enemy2_life=1){do enemy2.moveupdown(0,255);}
+
+            if (enemy3_life=1){do enemy3.moveupdown(0,255);}
+            if (enemy4_life=1){do enemy4.moveupdown(0,255);}
+
+            if (enemy5_life=1){do enemy5.moverightleft(0,511);}
+            if (enemy6_life=1){do enemy6.moverightleft(0,511);}
+
+            if (enemy7_life=1){do enemy7.moverightleft(0,511);}
+            if (enemy8_life=1){do enemy8.moverightleft(0,511);}
+
+            if (enemy9_life=1){do enemy9.moverightleft(0,511);}
+            if (enemy10_life=1){do enemy10.moverightleft(0,511);}
+            
+            let alive = role.attack();
+            do Sys.wait(50);
+            
+            if(timer=-1){if (key = 32) { // space   
+            let role_x=role.x();
+            let role_y=role.y();
+            let bomb1=bomb.new(role_x+16,role_y+16);
+            let timer = 48;
+            } }
+            if(timer > 0){let timer = timer- 1;do bomb1.draw();}    
+            if(timer = 0){
+              let role_x=role.x();
+              let role_y=role.y();
+              do bomb1.erase_side();
+              if(enemy1_life=1){
+              let enemy1_life=bomb1.check_kill(enemy1.x(),enemy1.y());
+              if(enemy1_life=0){let count_enemy=count_enemy-1;
+              let pupu1=pupu.new(enemy1.x(),enemy1.y());
+              }}
+              if(enemy2_life=1){
+              let enemy2_life=bomb1.check_kill(enemy2.x(),enemy2.y());
+              if(enemy2_life=0){let count_enemy=count_enemy-1;
+              let pupu2=pupu.new(enemy2.x(),enemy2.y());
+              }}
+
+              if(enemy3_life=1){
+              let enemy3_life=bomb1.check_kill(enemy3.x(),enemy3.y());
+              if(enemy3_life=0){let count_enemy=count_enemy-1;
+              let pupu3=pupu.new(enemy3.x(),enemy3.y());
+              }}
+              if(enemy4_life=1){
+              let enemy4_life=bomb1.check_kill(enemy4.x(),enemy4.y());
+              if(enemy4_life=0){let count_enemy=count_enemy-1;
+              let pupu4=pupu.new(enemy4.x(),enemy4.y());
+              }}
+
+              if(enemy5_life=1){
+              let enemy5_life=bomb1.check_kill(enemy5.x(),enemy5.y());
+              if(enemy5_life=0){let count_enemy=count_enemy-1;
+              let pupu5=pupu.new(enemy5.x(),enemy5.y());
+              }}
+              if(enemy6_life=1){
+              let enemy6_life=bomb1.check_kill(enemy6.x(),enemy6.y());
+              if(enemy6_life=0){let count_enemy=count_enemy-1;
+              let pupu6=pupu.new(enemy6.x(),enemy6.y());
+              }}
+
+              if(enemy7_life=1){
+              let enemy7_life=bomb1.check_kill(enemy7.x(),enemy7.y());
+              if(enemy7_life=0){let count_enemy=count_enemy-1;
+              let pupu7=pupu.new(enemy7.x(),enemy7.y());
+              }}
+              if(enemy8_life=1){
+              let enemy8_life=bomb1.check_kill(enemy8.x(),enemy8.y());
+              if(enemy8_life=0){let count_enemy=count_enemy-1;
+              let pupu8=pupu.new(enemy8.x(),enemy8.y());
+              }}
+
+              if(enemy9_life=1){
+              let enemy9_life=bomb1.check_kill(enemy9.x(),enemy9.y());
+              if(enemy9_life=0){let count_enemy=count_enemy-1;
+              let pupu9=pupu.new(enemy9.x(),enemy9.y());
+              }}
+              if(enemy10_life=1){
+              let enemy10_life=bomb1.check_kill(enemy10.x(),enemy10.y());
+              if(enemy10_life=0){let count_enemy=count_enemy-1;
+              let pupu10=pupu.new(enemy10.x(),enemy10.y());
+              }}
+              
+              let alive=bomb1.check_kill(role_x,role_y);
+              do bomb1.explode();
+              do bomb1.erase_side();
+              do draw_map_wall();
+              if (enemy1_life=0){if(pupu1.draw_()<2){do pupu1.draw(pupu1.locations());}}
+              if (enemy2_life=0){if(pupu2.draw_()<2){do pupu2.draw(pupu2.locations());}} 
+
+              if (enemy3_life=0){if(pupu3.draw_()<2){do pupu3.draw(pupu3.locations());}}
+              if (enemy4_life=0){if(pupu4.draw_()<2){do pupu4.draw(pupu4.locations());}} 
+
+              if (enemy5_life=0){if(pupu5.draw_()<2){do pupu5.draw(pupu5.locations());}}
+              if (enemy6_life=0){if(pupu6.draw_()<2){do pupu6.draw(pupu6.locations());}} 
+
+              if (enemy7_life=0){if(pupu7.draw_()<2){do pupu7.draw(pupu7.locations());}}
+              if (enemy8_life=0){if(pupu8.draw_()<2){do pupu8.draw(pupu8.locations());}} 
+
+              if (enemy9_life=0){if(pupu9.draw_()<2){do pupu9.draw(pupu9.locations());}}
+              if (enemy10_life=0){if(pupu10.draw_()<2){do pupu10.draw(pupu10.locations());}} 
+              let timer = -1;
+            }
+            
+            if(count_enemy = 0){let alive=0;}
+         }
+         if(count_enemy >0){
+             do Sys.wait(1000);
+             do Screen.clearScreen();
+             do Output.moveCursor(12,25);
+             do Output.printString("GAME OVER");
+             do Output.println();
+         
+         }
+         else{
+             do Sys.wait(1000);
+             do Screen.clearScreen();
+             do Output.moveCursor(12,25);
+             do Output.printString("YOU WIN");
+             do Output.println();
+         }
+         return;
+    }  
+}

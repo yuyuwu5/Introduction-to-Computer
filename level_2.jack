@@ -46,7 +46,6 @@ class level_2{
 	    return this;
 	}
 	method void dispose() {
-      do square.dispose();
       do Memory.deAlloc(this);
       return;
    }
@@ -120,6 +119,7 @@ class level_2{
             if (key = 130) { let direction = 3; }
             if (key = 67)  { let direction = 4; }    // c key
             if (key = 132) { let direction = 4; }
+            
             do moveRole();
             if (enemy1_life=1){do enemy1.moveupdown(0,255);}
             if (enemy2_life=1){do enemy2.moveupdown(0,255);}
@@ -135,7 +135,19 @@ class level_2{
 
             if (enemy9_life=1){do enemy9.moverightleft(0,511);}
             if (enemy10_life=1){do enemy10.moverightleft(0,511);}
-            
+            if (key = 80) {
+            	let count_enemy = 0;
+            	let pupu1=pupu.new(enemy1.x(),enemy1.y());
+				let pupu2=pupu.new(enemy2.x(),enemy2.y());
+				let pupu3=pupu.new(enemy3.x(),enemy3.y());
+				let pupu4=pupu.new(enemy4.x(),enemy4.y());
+				let pupu5=pupu.new(enemy5.x(),enemy5.y());
+				let pupu6=pupu.new(enemy6.x(),enemy6.y());
+				let pupu7=pupu.new(enemy7.x(),enemy7.y());
+				let pupu8=pupu.new(enemy8.x(),enemy8.y());
+            	let pupu9=pupu.new(enemy9.x(),enemy9.y());
+            	let pupu10=pupu.new(enemy10.x(),enemy.y());
+			}
             let alive = role.attack();
             do Sys.wait(50);
             

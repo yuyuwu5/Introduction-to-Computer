@@ -1,6 +1,6 @@
 class enemy {
 	
-	field int x, y;
+	field int x, y,life;
 	field memAddress memAddress;
 	field int location, temp;
 
@@ -8,6 +8,7 @@ class enemy {
 		let x = posx;
 		let y = posy;
 		let temp = 4;
+		//let life=1;
 		do draw(y*32 + (x / 16));
 		
 		return this;
@@ -15,7 +16,7 @@ class enemy {
 	
 	method void draw(int location) {
 		let memAddress = 16384+location;
-		do Memory.poke(memAddress+0, -32767);
+		do Memory.poke(memAddress+0, 0);
 		do Memory.poke(memAddress+32, -2048);
 		do Memory.poke(memAddress+64, 1024);
 		do Memory.poke(memAddress+96, 4608);
@@ -178,7 +179,7 @@ class enemy {
 	
 	method void moveupdown(int y1, int y2) { //situation 1 (y1 walk to y2)
 		var int direction,k, newlocation;
-		if(temp<0){let direction = 1; let newlocation = (y-32)*32+(x/16);}
+		if(temp<0){let direction = 1; let newlocation = (y-8)*32+(x/16);}
 		if(temp>0){let direction = 2; let newlocation = (y+32)*32+(x/16);}
 		let k = walk_or_turn(16384+newlocation,direction);
 		do erase(y*32 + (x / 16));
@@ -192,7 +193,7 @@ class enemy {
 	method void moverightleft(int x1, int x2) { // situation 2
 		var int direction,newlocation,k;
 		if(temp>0){let direction = 3; let newlocation = y*32+(x/16)+2;}
-		if(temp<0){let direction = 4; let newlocation = y*32+(x/16)-2;}
+		if(temp<0){let direction = 4; let newlocation = y*32+(x/16)-1;}
 		let k = walk_or_turn(16384+newlocation,direction);
 		do erase(y*32 + (x / 16));
 		if(k=0){let x=x+4;let temp = temp*(-1);}
@@ -226,5 +227,11 @@ class enemy {
 	     else {let walk1=0;}
 	    }
 	    return walk1;
+	}
+	method int x(){
+		return x;
+	}
+	method int y(){
+        return y;
 	}
 }

@@ -179,11 +179,11 @@ class enemy {
 	
 	method void moveupdown(int y1, int y2) { //situation 1 (y1 walk to y2)
 		var int direction,k, newlocation;
-		if(temp<0){let direction = 1; let newlocation = (y-8)*32+(x/16);}
+		if(temp<0){let direction = 1; let newlocation = (y-1)*32+(x/16);}
 		if(temp>0){let direction = 2; let newlocation = (y+32)*32+(x/16);}
 		let k = walk_or_turn(16384+newlocation,direction);
 		do erase(y*32 + (x / 16));
-		if(k=0){let temp = temp*(-1);let y = y+4;}
+		if(k=0){let temp = temp*(-1);let y = y+temp;}
 		if (y =y1){let temp = temp*(-1); let y = y+4;}
 		if (y =y2){let temp = temp*(-1); let y = y-4;}
 		let y = y + temp;
@@ -234,4 +234,5 @@ class enemy {
 	method int y(){
         return y;
 	}
+	
 }

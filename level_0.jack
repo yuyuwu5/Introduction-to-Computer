@@ -1,22 +1,26 @@
-class beginlevel{
+class level_0{
 	field mainrole role;
 	field enemy enemy1;
-	field int direction;
-	field boolen alive;
-	field int x,y;
+	field int direction,count_enemy;
+	field int x,y,role_x,role_y;           
 	field int bomb_x,bomb_y;
     field obstacle obstacle1, obstacle2;
     field wall wall1,wall2,wall3,wall4,wall5;
+    field int alive,enemy1_life;
+    field pupu pupu1;
+    field bomb bomb1;
 	
-	constructor beginlevel new(){
+	constructor level_0 new(){
 	    let x = 48;
 	    let y = 48;
-	    let alive = true;
+	    let alive = 1;
 	    do draw_map_wall();
 	    do draw_map_obstacle();
 	    let role = mainrole.new(x,y);
 	    let enemy1=enemy.new(336,80);
 	    let direction = 0;
+	    let count_enemy=1;
+	    let enemy1_life=1;
 	   // do Output.printInt(2*(-1));
 	    return this;
 	}
@@ -47,21 +51,17 @@ class beginlevel{
       do Sys.wait(5);  
       return;
    }
- /*   method void moveEnemy(){
-        do enemy1.moveupdown(80,112);
-        do Sys.wait(50);  
-        return;
-    }*/
+ 
     method void run() {
-        var char key, key1; 
-        var boolean exit;
-        let exit = false;
-
-        while (~exit) {
+        var char key, key1;
+        var int timer;
+        let timer = -1; 
+        
+        while (alive=1) {
             let direction = 0;
             let key = Keyboard.keyPressed();
 
-            if (key = 81)  { let exit = true; }      // q key
+            if (key = 81)  { let alive=0; }      // q key
             if (key = 131) { let direction = 1; }
             if (key = 83) { let direction = 1; }     // s key
             if (key = 88)  { let direction = 2; }    // x key
@@ -71,21 +71,53 @@ class beginlevel{
             if (key = 67) { let direction = 4; }     // c key
             if (key = 132) { let direction = 4; }
             do moveRole();
-            do enemy1.moveupdown(48,176);
-            do enemy2.moverightleft(80,432);
+            if (enemy1_life=1){do enemy1.moverightleft(0,511);}
+            let alive = role.attack();
             do Sys.wait(50);
             
-            /*if (key = 32) { // space   
-            do role.putbomb();
-            do draw_map_wall();
-            let alive = false; 
-            }     */
+            if(timer=-1){if (key = 32) { // space   
+            let role_x=role.x();
+            let role_y=role.y();
+            let bomb1=bomb.new(role_x+16,role_y+16);
+            let timer = 48;
+            } }
+            if(timer > 0){let timer = timer- 1;do bomb1.draw();}    
+            if(timer = 0){
+              let role_x=role.x();
+              let role_y=role.y();
+              do bomb1.erase_side();
+              
+              if(enemy1_life=1){
+              let enemy1_life=bomb1.check_kill(enemy1.x(),enemy1.y());
+              if(enemy1_life=0){let count_enemy=count_enemy-1;
+              let pupu1=pupu.new(enemy1.x(),enemy1.y());
+              }}
+              
+              let alive=bomb1.check_kill(role_x,role_y);
+              do bomb1.explode();
+              do bomb1.erase_side();
+              do draw_map_wall();
+              if (enemy1_life=0){if(pupu1.draw_()<2){do pupu1.draw(pupu1.locations());}}
             
-         }
-
-         if(~alive){
+              let timer = -1;
+            }
+            
+            if(count_enemy = 0){let alive=0;}
+         }  
+            
+       if(count_enemy >0){
+             do Sys.wait(1000);
+             do Screen.clearScreen();
              do Output.moveCursor(12,25);
              do Output.printString("GAME OVER");
+             do Output.println();
+         
+         }
+         else{
+             do Sys.wait(1000);
+             do Screen.clearScreen();
+             do Output.moveCursor(12,25);
+             do Output.printString("YOU WIN");
              do Output.println();
          }
          return;

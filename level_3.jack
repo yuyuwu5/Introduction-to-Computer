@@ -5,6 +5,7 @@ class level_3{
   field int alive,enemy1_life,enemy2_life,enemy3_life,enemy4_life,enemy5_life,enemy6_life,enemy7_life,enemy8_life;
   field int x,y,count_enemy;
   field int role_x,role_y;
+  field pupu pupu1,pupu2,pupu3,pupu4,pupu5,pupu6,pupu7,pupu8;
     field obstacle ob1, ob2, ob3, ob4, ob5, ob6, ob7, ob8, ob9, ob10, ob11, ob12, ob13, ob14, ob15, ob16, ob17;
     //field wall wall1,wall2,wall3,wall4,wall5;
     field bomb bomb1;
@@ -141,36 +142,52 @@ class level_3{
             do bomb1.erase_side();
               if(enemy1_life=1){let enemy1_life=bomb1.check_kill(enemy1.x(),enemy1.y());
                  if(enemy1_life=0){let count_enemy=count_enemy-1;
+                 let pupu1=pupu.new(enemy1.x(),enemy1.y());
               }}
               if(enemy2_life=1){let enemy2_life=bomb1.check_kill(enemy2.x(),enemy2.y());
               if(enemy2_life=0){let count_enemy=count_enemy-1;
+              let pupu2=pupu.new(enemy2.x(),enemy2.y());
               }}
              
               if(enemy3_life=1){let enemy3_life=bomb1.check_kill(enemy3.x(),enemy3.y());
               if(enemy3_life=0){let count_enemy=count_enemy-1;
+              let pupu3=pupu.new(enemy3.x(),enemy3.y());
               }}
               if(enemy4_life=1){let enemy4_life=bomb1.check_kill(enemy4.x(),enemy4.y());
               if(enemy4_life=0){let count_enemy=count_enemy-1;
+              let pupu4=pupu.new(enemy4.x(),enemy4.y());
               }}
               
               if(enemy5_life=1){let enemy5_life=bomb1.check_kill(enemy5.x(),enemy5.y());
               if(enemy5_life=0){let count_enemy=count_enemy-1;
+              let pupu5=pupu.new(enemy5.x(),enemy5.y());
               }}
               if(enemy6_life=1){let enemy6_life=bomb1.check_kill(enemy6.x(),enemy6.y());
               if(enemy6_life=0){let count_enemy=count_enemy-1;
+              let pupu6=pupu.new(enemy6.x(),enemy6.y());
               }}
               
               if(enemy7_life=1){let enemy7_life=bomb1.check_kill(enemy7.x(),enemy7.y());
               if(enemy7_life=0){let count_enemy=count_enemy-1;
+              let pupu7=pupu.new(enemy7.x(),enemy7.y());
               }}
               if(enemy8_life=1){let enemy8_life=bomb1.check_kill(enemy8.x(),enemy8.y());
               if(enemy8_life=0){let count_enemy=count_enemy-1;
+              let pupu8=pupu.new(enemy8.x(),enemy8.y());
               }}
               
             let alive=bomb1.check_kill(role_x,role_y);
             do bomb1.explode();
             do bomb1.erase_side();
             do draw_map_wall(); 
+              if (enemy1_life=0){if(pupu1.draw_()<2){do pupu1.draw(pupu1.locations());}}
+              if (enemy2_life=0){if(pupu2.draw_()<2){do pupu2.draw(pupu2.locations());}} 
+              if (enemy3_life=0){if(pupu3.draw_()<2){do pupu3.draw(pupu3.locations());}}
+              if (enemy4_life=0){if(pupu4.draw_()<2){do pupu4.draw(pupu4.locations());}}
+              if (enemy5_life=0){if(pupu5.draw_()<2){do pupu5.draw(pupu5.locations());}}
+              if (enemy6_life=0){if(pupu6.draw_()<2){do pupu6.draw(pupu6.locations());}}
+              if (enemy7_life=0){if(pupu7.draw_()<2){do pupu7.draw(pupu7.locations());}}
+              if (enemy8_life=0){if(pupu8.draw_()<2){do pupu8.draw(pupu8.locations());}}
             let timer = -1;
             }
             if(count_enemy = 0){let alive=0;}

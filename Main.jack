@@ -6,10 +6,19 @@ class Main{
 		var level_1 game1;
 		var level_2 game2;
 		var level_3 game3;
-		
+		var char press;
+		let press = 0;
 		let startgame = start.new();
-		do start.wait();
-		do start.dispose();
+		while(press = 0) {
+			let press = Keyboard.keyPressed();
+			do startgame.light();
+			do Sys.wait(300);
+			do startgame.unlight();
+		}
+		if(~(press = 0)){
+			do startgame.erase();
+			do startgame.dispose();
+		}
 
 		let game = level_0.new();
 		do game.run();

@@ -93,13 +93,13 @@ class bomb{
         let b = Math.abs(ay-y+16);
        
         if(a<49){
-            if(b = 0){
+            if(b <17){
             let situations=0;}}
-        if(a=0){
+        if(a<17){
             if(b < 49){
             let situations=0;}}
-        if(a=0){
-            if(b=0){
+        if(a<17){
+            if(b<17){
             let situations=0;}}
         return situations;
 

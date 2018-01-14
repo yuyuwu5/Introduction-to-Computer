@@ -1,0 +1,93 @@
+class beginlevel{
+	field mainrole role;
+	field enemy enemy1;
+	field int direction;
+	field boolen alive;
+	field int x,y;
+	field int bomb_x,bomb_y;
+    field obstacle obstacle1, obstacle2;
+    field wall wall1,wall2,wall3,wall4,wall5;
+	
+	constructor beginlevel new(){
+	    let x = 48;
+	    let y = 48;
+	    let alive = true;
+	    do draw_map_wall();
+	    do draw_map_obstacle();
+	    let role = mainrole.new(x,y);
+	    let enemy1=enemy.new(336,80);
+	    let direction = 0;
+	   // do Output.printInt(2*(-1));
+	    return this;
+	}
+	method void dispose() {
+      do square.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+    method void draw_map_wall(){
+        do Screen.drawRectangle(0,0,15,255);
+		do Screen.drawRectangle(496,0,511,255);
+		do Screen.drawRectangle(15,0,495,15);
+		do Screen.drawRectangle(15,240,496,255);
+		return;
+    }
+    method void draw_map_obstacle(){
+        let obstacle1= obstacle.new(336,144);
+        let obstacle2= obstacle.new(336,48);
+
+        return;
+
+    }
+	method void moveRole() {
+      if (direction = 1) { do role.moveup(); }
+      if (direction = 2) { do role.movedown(); }
+      if (direction = 3) { do role.moveleft(); }
+      if (direction = 4) { do role.moveright(); }
+      do Sys.wait(5);  
+      return;
+   }
+ /*   method void moveEnemy(){
+        do enemy1.moveupdown(80,112);
+        do Sys.wait(50);  
+        return;
+    }*/
+    method void run() {
+        var char key, key1; 
+        var boolean exit;
+        let exit = false;
+
+        while (~exit) {
+            let direction = 0;
+            let key = Keyboard.keyPressed();
+
+            if (key = 81)  { let exit = true; }      // q key
+            if (key = 131) { let direction = 1; }
+            if (key = 83) { let direction = 1; }     // s key
+            if (key = 88)  { let direction = 2; }    // x key
+            if (key = 133) { let direction = 2; }
+            if (key = 90)  { let direction = 3; }    // z key
+            if (key = 130) { let direction = 3; }
+            if (key = 67) { let direction = 4; }     // c key
+            if (key = 132) { let direction = 4; }
+            do moveRole();
+            do enemy1.moveupdown(48,176);
+            do enemy2.moverightleft(80,432);
+            do Sys.wait(50);
+            
+            /*if (key = 32) { // space   
+            do role.putbomb();
+            do draw_map_wall();
+            let alive = false; 
+            }     */
+            
+         }
+
+         if(~alive){
+             do Output.moveCursor(12,25);
+             do Output.printString("GAME OVER");
+             do Output.println();
+         }
+         return;
+    }  
+}

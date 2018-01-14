@@ -1,85 +1,85 @@
 class level_3{
-	field mainrole role;
-	field enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8;
-	field int direction;
-	field int alive;
-	field int x,y;
-	field int role_x,role_y;
+  field mainrole role;
+  field enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8;
+  field int direction;
+  field int alive;
+  field int x,y;
+  field int role_x,role_y;
     field obstacle ob1, ob2, ob3, ob4, ob5, ob6, ob7, ob8, ob9, ob10, ob11, ob12, ob13, ob14, ob15, ob16, ob17;
     //field wall wall1,wall2,wall3,wall4,wall5;
     field bomb bomb1;
-	
-	constructor level_3 new(){
-	    let x = 16;
-	    let y = 208;
-	    let alive = 1;
-	    do draw_map_wall();
-	    do draw_map_obstacle();
-	    let role = mainrole.new(x,y);
-	    let enemy1 = enemy.new(16,80);
-	    let enemy2 = enemy.new(112,48);
-	    let enemy3 = enemy.new(240,80);
-	    let enemy4 = enemy.new(112,208);
-	    let enemy5 = enemy.new(208,16);
-	    let enemy6 = enemy.new(336,16);
-	    let enemy7 = enemy.new(400,112);
-	    let enemy8 = enemy.new(464,176);
-	    let direction = 0;
-	   // do Output.printInt(2*(-1));
-	    return this;
-	}
-	method void dispose() {
+  
+  constructor level_3 new(){
+      let x = 16;
+      let y = 208;
+      let alive = 1;
+      do draw_map_wall();
+      do draw_map_obstacle();
+      let role = mainrole.new(x,y);
+      let enemy1 = enemy.new(16,80);
+      let enemy2 = enemy.new(112,48);
+      let enemy3 = enemy.new(240,80);
+      let enemy4 = enemy.new(112,208);
+      let enemy5 = enemy.new(208,16);
+      let enemy6 = enemy.new(336,16);
+      let enemy7 = enemy.new(400,112);
+      let enemy8 = enemy.new(464,176);
+      let direction = 0;
+     // do Output.printInt(2*(-1));
+      return this;
+  }
+  method void dispose() {
       do Memory.deAlloc(this);
       return;
    }
     method void draw_map_wall(){
         do Screen.setColor(true);
         do Screen.drawRectangle(0,0,15,255);
-		do Screen.drawRectangle(496,0,511,255);
-		do Screen.drawRectangle(15,0,495,15);
-		do Screen.drawRectangle(15,240,496,255);
-		do Screen.drawRectangle(48,48,79,79);
-		do Screen.drawRectangle(48,112,111,143);
-		do Screen.drawRectangle(48,176,79,207);
-		//do Screen.drawRectangle(112,16,143,47);
-		do Screen.drawRectangle(112,176,303,207);
-		do Screen.drawRectangle(144,112,175,143);
-		//do Screen.drawRectangle(176,16,207,47);
-		do Screen.drawRectangle(208,112,239,143);
-		//do Screen.drawRectangle(240,16,271,47);
-		do Screen.drawRectangle(272,112,303,143);
-		do Screen.drawRectangle(304,16,335,111);
-		do Screen.drawRectangle(336,176,399,239);
-		do Screen.drawRectangle(368,48,399,79);
-		do Screen.drawRectangle(368,112,399,143);
-		do Screen.drawRectangle(432,16,463,47);
-		do Screen.drawRectangle(432,80,463,111);
-		do Screen.drawRectangle(432,144,463,175);
-		do Screen.drawRectangle(432,208,463,239);
-		return;
+    do Screen.drawRectangle(496,0,511,255);
+    do Screen.drawRectangle(15,0,495,15);
+    do Screen.drawRectangle(15,240,496,255);
+    do Screen.drawRectangle(48,48,79,79);
+    do Screen.drawRectangle(48,112,111,143);
+    do Screen.drawRectangle(48,176,79,207);
+    //do Screen.drawRectangle(112,16,143,47);
+    do Screen.drawRectangle(112,176,303,207);
+    do Screen.drawRectangle(144,112,175,143);
+    //do Screen.drawRectangle(176,16,207,47);
+    do Screen.drawRectangle(208,112,239,143);
+    //do Screen.drawRectangle(240,16,271,47);
+    do Screen.drawRectangle(272,112,303,143);
+    do Screen.drawRectangle(304,16,335,111);
+    do Screen.drawRectangle(336,176,399,239);
+    do Screen.drawRectangle(368,48,399,79);
+    do Screen.drawRectangle(368,112,399,143);
+    do Screen.drawRectangle(432,16,463,47);
+    do Screen.drawRectangle(432,80,463,111);
+    do Screen.drawRectangle(432,144,463,175);
+    do Screen.drawRectangle(432,208,463,239);
+    return;
     }
     method void draw_map_obstacle(){
         let ob1 = obstacle.new(16,144);
         let ob2 = obstacle.new(48,16);
-		let ob3 = obstacle.new(48,80);
-		let ob4 = obstacle.new(80,208);
-		let ob5 = obstacle.new(112,112);
-		//let ob6 = obstacle.new(144,16);
-		let ob7 = obstacle.new(176,112);
-		//let ob8 = obstacle.new(208,16);
-		let ob9 = obstacle.new(240,112);
-		let ob10 = obstacle.new(304,144);
-		let ob11 = obstacle.new(304, 208);
-		let ob12 = obstacle.new(368,16);
-		let ob13 = obstacle.new(368,80);
-		let ob14 = obstacle.new(368,144);
-		let ob15 = obstacle.new(432,48);
-		let ob16 = obstacle.new(432,112);
-		let ob17 = obstacle.new(432,176);
+    let ob3 = obstacle.new(48,80);
+    let ob4 = obstacle.new(80,208);
+    let ob5 = obstacle.new(112,112);
+    //let ob6 = obstacle.new(144,16);
+    let ob7 = obstacle.new(176,112);
+    //let ob8 = obstacle.new(208,16);
+    let ob9 = obstacle.new(240,112);
+    let ob10 = obstacle.new(304,144);
+    let ob11 = obstacle.new(304, 208);
+    let ob12 = obstacle.new(368,16);
+    let ob13 = obstacle.new(368,80);
+    let ob14 = obstacle.new(368,144);
+    let ob15 = obstacle.new(432,48);
+    let ob16 = obstacle.new(432,112);
+    let ob17 = obstacle.new(432,176);
         return;
 
     }
-	method void moveRole() {
+  method void moveRole() {
       if (direction = 1) { do role.moveup(); }
       if (direction = 2) { do role.movedown(); }
       if (direction = 3) { do role.moveleft(); }
@@ -108,14 +108,14 @@ class level_3{
             if (key = 67)  { let direction = 4; }    // c key
             if (key = 132) { let direction = 4; }
             do moveRole();
-            do enemy1.moveupdown(16,112);
-            do enemy2.moverightleft(80,272);
-            do enemy3.moverightleft(80,272);
-            do enemy4.moverightleft(112,272);
-            do enemy5.moverightleft(80,272);
-            do enemy6.moveupdown(16,144);
-            do enemy7.moveupdown(16,208);
-            do enemy8.moveupdown(16,208);
+            do enemy1.moveupdown(0,255);
+            do enemy2.moverightleft(0,511);
+            do enemy3.moverightleft(0,511);
+            do enemy4.moverightleft(0,511);
+            do enemy5.moverightleft(0,511);
+            do enemy6.moveupdown(0,255);
+            do enemy7.moveupdown(0,255);
+            do enemy8.moveupdown(0,255);
             do Sys.wait(50);
             
             if (key = 32) { // space   

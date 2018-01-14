@@ -14,21 +14,7 @@ class bomb{
       do Memory.deAlloc(this);
       return;
    }
-    method int boudary_warn_x(){
-        var int k;
-        let k=0;
-        if(x<63){let k = x;}
-        if(x>448){let k =x;}
-        return k;
-        
-    }
-    method int boudary_warn_y(){
-        var int k;
-        let k = 0;
-        if(y<63){let k = y;}
-        if(y>173){let k =y;}
-        return k;
-    }
+   
 	method void draw(){
 	    do Screen.setColor(true);
 		do Screen.drawPixel(x,y-12);
@@ -51,7 +37,7 @@ class bomb{
         if(x>48){do Screen.drawRectangle(x-48,y-16,x-16,y+16);}
         if(x<464){do Screen.drawRectangle(x+16,y-16,x+48,y+16);}
         if(y>48){do Screen.drawRectangle(x-16,y-48,x+16,y-16);}
-        if(y<177){do Screen.drawRectangle(x-16,y+16,x+16,y+48);}
+        if(y<209){do Screen.drawRectangle(x-16,y+16,x+16,y+48);}
            
 	     return;
 	}
@@ -65,7 +51,7 @@ class bomb{
         do Screen.drawRectangle(x-45,y-15,x-35,y-5);
         do Screen.drawRectangle(x-25,y-15,x-15,y-5);
         }
-        if(y<177){
+        if(y<209){
         do Sys.wait(5);
         do Screen.drawRectangle(x-15,y+35,x-5,y+45);
         do Screen.drawRectangle(x-15,y+15,x-5,y+25);
@@ -100,17 +86,17 @@ class bomb{
         do Sys.wait(200);    
         return;
 	}
-    method int check_kill(int ax,int ay){
+    method int check_kill(int ax,int ay){//data in enemy and mainrole's x&y
         var int situations, a,b;
         let situations=1;
         let a = Math.abs(ax-x+16);
         let b = Math.abs(ay-y+16);
        
-        if(a=32){
+        if(a<49){
             if(b = 0){
             let situations=0;}}
         if(a=0){
-            if(b = 32){
+            if(b < 49){
             let situations=0;}}
         if(a=0){
             if(b=0){

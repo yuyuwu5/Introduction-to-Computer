@@ -19,7 +19,7 @@ class mainrole{
 	}
 	method void draw(int location){
 	    let memAddress = 16384+location;
-	do Memory.poke(memAddress+0, -2);
+	do Memory.poke(memAddress+0, 0);
 	do Memory.poke(memAddress+32, -4);
 	do Memory.poke(memAddress+64, -8);
 	do Memory.poke(memAddress+96, 496);
@@ -38,7 +38,7 @@ class mainrole{
 
 	    let location = location+1;
 	    let memAddress = 16384+location;
-	    do Memory.poke(memAddress+0, 32767);
+	    do Memory.poke(memAddress+0, 0);
 	do Memory.poke(memAddress+32, 16383);
 	do Memory.poke(memAddress+64, 8191);
 	do Memory.poke(memAddress+96, 3968);
@@ -184,5 +184,4 @@ class mainrole{
 	method int y(){
         return y;
 	}
-
 }

@@ -11,28 +11,65 @@ class Main{
 		let startgame = start.new();
 		while(press = 0) {
 			let press = Keyboard.keyPressed();
-			do startgame.light();
-			do Sys.wait(300);
-			do startgame.unlight();
 		}
 		if(~(press = 0)){
-			do startgame.erase();
+			do Screen.clearScreen();
 			do startgame.dispose();
+			let press = 0;
 		}
 
 		let game = level_0.new();
 		do game.run();
 		do game.dispose();
-		
+
+		do Screen.clearScreen();
+
+		do Output.moveCursor(10,30);
+		do Output.printString("NEXT STAGE");
+		do Sys.wait(1000);
+		let press = 0;
+		while(press = 0) {
+			let press = Keyboard.keyPressed();
+		}
+		if(~(press = 0)){
+			do Screen.clearScreen();
+		}
+
 		let game1 = level_1.new();
 		do game1.run();
 		do game1.dispose();
+
+		do Screen.clearScreen();
+
+		do Output.moveCursor(10,30);
+		do Output.printString("NEXT STAGE");
+		do Sys.wait(1000);
+		let press = 0;
+		while(press = 0) {
+			let press = Keyboard.keyPressed();
+		}
+		if(~(press = 0)){
+			do Screen.clearScreen();
+			let press = 0;
+		}
 
 		
 		let game2 = level_2.new();
 		do game2.run();
 		do game2.dispose();
-		
+
+		do Screen.clearScreen();
+		do Output.moveCursor(10,30);
+		do Output.printString("NEXT STAGE");
+		do Sys.wait(1000);
+		let press = 0;
+		while(press = 0) {
+			let press = Keyboard.keyPressed();
+		}
+		if(~(press = 0)){
+			do Screen.clearScreen();
+			let press = 0;
+		}
 
 		let game3 = level_3.new();
 		do game3.run();

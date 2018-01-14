@@ -3,12 +3,15 @@ class mainrole{
 	field int x,y;
 	field bomb bomb1;
 	field memAddress memAddress;
-	field int location, temp, newlocation;
+	field int location, temp, newlocation,locations1,locations2,locations3;
 	field int walk2,walk1,walk;
 
 	constructor mainrole new(int Ax,int Ay){
 		let x=Ax;
 		let y=Ay;
+		let locations1=(y+1)*32+(x/16);
+		let locations2=(y+30)*32+(x/16);
+		let locations3=(y+1)*32+(x/16)+1;
 		do draw(y*32+(x/16));	
 		return this;
 	}
@@ -73,7 +76,7 @@ class mainrole{
 	do Memory.poke(memAddress+384, 31744);
 	do Memory.poke(memAddress+416, 15360);
 	do Memory.poke(memAddress+448, 15360);
-	do Memory.poke(memAddress+480, 15360);
+	do Memory.poke(memAddress+480, 0);
 
 	    let location = location+1;
 	    let memAddress = 16384+location;
@@ -92,7 +95,7 @@ class mainrole{
 	do Memory.poke(memAddress+384, 62);
 	do Memory.poke(memAddress+416, 60);
 	do Memory.poke(memAddress+448, 60);
-	do Memory.poke(memAddress+480, 60);
+	do Memory.poke(memAddress+480, 0);
 		return;
 	}
 	method void erase(){
@@ -138,6 +141,9 @@ class mainrole{
 			  do erase();
 			  let y=y-32;
 			  do draw(y*32+(x/16));
+			  let locations1=(y+1)*32+(x/16);
+			  let locations2=(y+30)*32+(x/16);
+			  let locations3=(y+1)*32+(x/16)+1;
 			}
 		}
 		return;
@@ -150,6 +156,9 @@ class mainrole{
 			   do erase();
 			   let y=y+32;
 			   do draw(y*32+(x/16));
+			   let locations1=(y+1)*32+(x/16);
+			   let locations2=(y+30)*32+(x/16);
+			   let locations3=(y+1)*32+(x/16)+1;
 			}
 		}
 		return;
@@ -162,6 +171,9 @@ class mainrole{
 			do erase();
 			let x=x+32;
 			do draw(y*32+(x/16));
+			let locations1=(y+1)*32+(x/16);
+			let locations2=(y+30)*32+(x/16);
+			let locations3=(y+1)*32+(x/16)+1;
 			}
 		}
 		return;
@@ -174,6 +186,9 @@ class mainrole{
 			do erase();
 			let x=x-32;
 			do draw(y*32+(x/16));
+			let locations1=(y+1)*32+(x/16);
+			let locations2=(y+30)*32+(x/16);
+			let locations3=(y+1)*32+(x/16)+1;
 		}
 		}
 		return;
@@ -183,5 +198,20 @@ class mainrole{
 	}
 	method int y(){
         return y;
+	}
+	method int attack(){
+        var int sss,ssss,sssss,alive;
+        let alive=1;
+        let memAddress = 16384+locations1;
+        let sss=Memory.peek(memAddress);
+        let memAddress = 16384+locations2;
+        let ssss=Memory.peek(memAddress);
+        let memAddress = 16384+locations3;
+        let sssss=Memory.peek(memAddress);
+        //do Output.printInt(sss);
+        if(sss=0){let alive=0;}
+        if(ssss=0){let alive=0;} 
+        if(sssss=0){let alive=0;} 
+        return alive;
 	}
 }

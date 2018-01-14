@@ -1,4 +1,4 @@
-class level_2_2{
+class level_1{
 	field mainrole role;
 	field enemy enemy1, enemy2,enemy3,enemy4;
 	field int direction;
@@ -10,7 +10,7 @@ class level_2_2{
     field bomb bomb1;
     field pupu pupu1,pupu2,pupu3,pupu4;
 	
-	constructor level_2_2 new(){
+	constructor level_1 new(){
 	    let x = 16;
 	    let y = 208;
 	    do draw_map_wall();

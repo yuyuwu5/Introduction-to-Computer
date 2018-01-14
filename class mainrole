@@ -135,7 +135,7 @@ class mainrole{
 
 	method void moveup(){//direction 1
 		if(y>33){
-		    let newlocation = (y-32)*32+(x/16);
+		    let newlocation = (y-1)*32+(x/16);
 		    let walk = walk_or_not(16384+newlocation,1);
 		    if(walk=1){
 			  do erase();

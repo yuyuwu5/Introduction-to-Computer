@@ -39,6 +39,9 @@ class start{
 		do Screen.drawRectangle(450,178,478,206);
 		do Screen.drawRectangle(18,178,174,206);
 		
+		do Screen.drawCircle(185,225,3);
+		do Screen.drawCircle(340,225,3);
+		
 		do Screen.setColor(false);
 		do Screen.drawRectangle(368,32,400,112);
 		do Screen.drawRectangle(448,16,480,112);
@@ -72,23 +75,6 @@ class start{
 		do Output.printString("PRESS ANY BOTTON");
 		
 		
-		return;
-	}
-	method void erase(){
-		do Screen.setColor(false);
-		do Screen.drawRectangle(0,0,511,255);
-		return;
-	}
-	method void light(){
-		do Screen.setColor(true);
-		do Screen.drawCircle(185,225,3);
-		do Screen.drawCircle(340,225,3);
-		return;
-	}
-	method void unlight(){
-		do Screen.setColor(false);
-		do Screen.drawCircle(185,225,3);
-		do Screen.drawCircle(340,225,3);
 		return;
 	}
 	

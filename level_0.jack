@@ -115,6 +115,7 @@ class level_0{
              do Screen.clearScreen();
              do Output.moveCursor(12,25);
              do Output.printString("GAME OVER");
+		do role.draw_die(16384+128*32+(128/16));
              do Output.println();
          
          }
